@@ -1,0 +1,114 @@
+[
+    {
+        "name" : "view_lucky",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_lucky",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_lucky",
+        "guard_name" : "web"
+    },
+   {
+        "name" : "delete_lucky",
+        "guard_name" : "web"
+   },
+   {
+        "name" : "view_donor",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_donor",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_donor",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_donor",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "view_roles",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_roles",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_roles",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_roles",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "view_permissions",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_permissions",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_permissions",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_permissions",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "view_setting",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_setting",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_setting",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_setting",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "view_users",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_users",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_users",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_users",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "view_pathans",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "edit_pathans",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "add_pathans",
+        "guard_name" : "web"
+    },
+    {
+        "name" : "delete_pathans",
+        "guard_name" : "web"
+    }
+]
