@@ -51,8 +51,8 @@ class RoleController extends Controller
         $role = Role::create($request->validated());
 
         $role->syncPermissions($request->permission);
-
-        flash("Your role is successfully created &#128522;")->success();
+        session(['success' =>"Your role is successfully created &#128522;"]);
+        // flash("Your role is successfully created &#128522;")->success();
 
         return redirect()->back();
     }
@@ -65,7 +65,8 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        flash("&#128540; &#128541; &#128539; &#128538; &#128537; &#128536;");
+        session(['success' =>"👍"]);
+        //flash("&#128540; &#128541; &#128539; &#128538; &#128537; &#128536;");
         return redirect()->back();
     }
 
@@ -92,7 +93,9 @@ class RoleController extends Controller
         Log::info("Role name ". $role->name ." updated by ". auth()->user()->name );
         $role->update($request->validated());
         $role->syncPermissions($request->permission);
-        flash("Your role is successfully created. 👍")->success();
+        session(['success' =>"Your role is successfully updated. 👍"]);
+
+        //  flash("Your role is successfully created. 👍")->success();
         return redirect()->route("roles.index");
     }
 
@@ -106,7 +109,8 @@ class RoleController extends Controller
     {
         Log::info("Role name ". $role->name ." updated by ". auth()->user()->name );
         $role->delete();
-        flash("Your role is successfully deleted")->success();
+        session(['success' =>"Your role is successfully deleted"]);
+        // flash("Your role is successfully deleted")->success();
         return redirect()->route('roles.index');
     }
 }

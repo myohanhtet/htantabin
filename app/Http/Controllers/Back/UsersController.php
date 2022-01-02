@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use App\Traits\Authorizable;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -17,6 +18,7 @@ use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
+    use Authorizable;
     /**
      * UsersController constructor.
      */
@@ -57,8 +59,8 @@ class UsersController extends Controller
         $user = User::create($request->validated());
 
         $user->assignRole($request->role);
-
-        \flash("Successful created user")->success();
+        session(['success' =>"Successful created user"]);
+        // \flash("Successful created user")->success();
 
         return redirect()->route("users.index");
     }
@@ -97,7 +99,8 @@ class UsersController extends Controller
     {
         $user->update($request->validated());
         $user->syncRoles($request->role);
-        \flash("Successful updated user")->success();
+        session(['success' =>"Successful updated user"]);
+        // \flash("Successful updated user")->success();
         return redirect()->route('users.index');
     }
 
@@ -111,7 +114,8 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        \flash("Successful deleted user")->success();
+        session(['success' =>"Successful deleted user"]);
+        // \flash("Successful deleted user")->success();
         return redirect()->route('users.index');
 
     }
