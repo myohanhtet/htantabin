@@ -30,7 +30,6 @@ class StoreLuckyDrawRequest extends FormRequest
             'mtl' => 'required',
             'mtl_value' => 'required|max:7',
             'address' => 'required',
-
         ];
     }
 

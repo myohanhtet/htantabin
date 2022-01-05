@@ -49,14 +49,29 @@ class LuckyDrawController extends Controller
      * @param StoreLuckyDrawRequest $request
      * @return Application|Factory|View
      */
-    public function store(StoreLuckyDrawRequest $request)
+    public function store(Request $request)
     {
-        $lucky_draw = LuckyDraw::create($request->validated() +
-            [
-                'lucky_no' => $request->lucky_no,
-                'user_id' => auth()->id(),
-                'times'=> setting('times')
-            ]);
+
+        $amount = ($request->amount == '') ? 0 : $request->amount;
+        $mtl_value = ($request->mtl_value == '') ? 0 : $request->amount;
+
+        $lucky_draw = LuckyDraw::create([
+            'amount' => $amount,
+            'donor' => $request->donor,
+            'mtl' => $request->mtl,
+            'mtl_value' => $mtl_value,
+            'address' => $request->address,
+            'lucky_no' => $request->lucky_no,
+            'user_id' => auth()->id(),
+            'times'=> setting('times')
+        ]);
+        
+        // $lucky_draw = LuckyDraw::create($request->validated() +
+        //     [
+        //         'lucky_no' => $request->lucky_no,
+        //         'user_id' => auth()->id(),
+        //         'times'=> setting('times')
+        //     ]);
 
         $file_name = $this->printPdf($lucky_draw->id);
 
@@ -95,12 +110,22 @@ class LuckyDrawController extends Controller
      * @param LuckyDraw $lucky
      * @return Application|Factory|View
      */
-    public function update(UpdateLuckyDrawRequest $request, LuckyDraw $lucky)
+    public function update(Request $request, LuckyDraw $lucky)
     {
-        $lucky->update($request->validated() + [
-                'lucky_no' => $request->lucky_no,
-                'user_id' => auth()->id(),
-                'times'=> setting('times')] );
+        $amount = (request()->amount == '') ? 0 : request()->amount;
+        $mtl_value = (request()->mtl_value == '') ? 0 : request()->mtl_value;
+        // dd($mtl_value);
+        
+        $lucky->update([
+            'amount' => $amount,
+            'donor' => request()->donor,
+            'mtl' => request()->mtl,
+            'mtl_value' => $mtl_value,
+            'address' => request()->address,
+            'lucky_no' => request()->lucky_no,
+            'user_id' => auth()->id(),
+            'times'=> setting('times')
+                ]);
         Log::info("Luck ID ". $lucky->id ." updated by ". auth()->user()->name );
 
         $fileName = $this->printPdf($lucky->id);
