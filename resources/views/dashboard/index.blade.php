@@ -26,7 +26,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">ငွေပဒေသာစုစုပေါင်း</span>
                     <span class="info-box-number">
-                  {!! en_number($lucky->sum('amount')) !!}
+                  {!! en_number(number_format($lucky->sum('amount'))) !!}
                   <small>ကျပ်</small>
                 </span>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">လှူဖွယ်ပစ္စည်းတန်ဖိုး</span>
                     <span class="info-box-number">
-                        {!! en_number($lucky->sum('mtl_value')) !!} 
+                        {!! en_number(number_format($lucky->sum('mtl_value'))) !!}
                         <small>ကျပ်</small>
                     </span>
                 </div>
@@ -61,7 +61,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">နှစ်ရပ်ပေါင်း တန်ဖိုး</span>
-                    <span class="info-box-number"> {!! en_number($lucky->sum('amount') + $lucky->sum('mtl_value')) !!} 
+                    <span class="info-box-number"> {!! en_number(number_format($lucky->sum('amount') + $lucky->sum('mtl_value'))) !!}
                     <small>ကျပ်</small>
                     </span>
                 </div>
@@ -113,7 +113,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">အလှူတော်ငွေစုစုပေါင်း</span>
                     <span class="info-box-number">
-                  {!! en_number($pathan->sum('amount')) !!}
+                  {!! en_number(number_format($pathan->sum('amount'))) !!}
                   <small>ကျပ်</small>
                 </span>
                 </div>
@@ -128,7 +128,7 @@
 
                 <div class="info-box-content">
                     <span class="info-box-text">လှူဖွယ်ပစ္စည်းတန်ဖိုး</span>
-                    <span class="info-box-number">{!! $pathan->sum('mtl_value') !!}
+                    <span class="info-box-number">{!! en_number(number_format($pathan->sum('mtl_value'))) !!}
                         <small>ကျပ်</small></span>
                 </div>
                 <!-- /.info-box-content -->
@@ -147,7 +147,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">နှစ်ရပ်ပေါင်း တန်ဖိုး</span>
                     <span class="info-box-number">
-                        {!! en_number($pathan->sum('amount')+$pathan->sum('mtl_value')) !!}
+                        {!! en_number(number_format($pathan->sum('amount')+$pathan->sum('mtl_value'))) !!}
                         <small>ကျပ်</small>
                     </span>
                 </div>
@@ -163,7 +163,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">အလှူရှင်ပေါင်း</span>
                     <span class="info-box-number">
-                        {!! en_number($pathan->count()) !!}
+                        {!! en_number(number_format($pathan->count())) !!}
                         <small>ဦး</small>
                     </span>
                 </div>
