@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="donor">{{ __('lucky.donor name') }}</label>
-                            <textarea name="donor" id="editor1" class="form-control">
+                            <textarea name="donor" class="form-control">
                                 {{ old('donor') }}
                             </textarea>
                         </div>
@@ -59,7 +59,7 @@
     </div>
 
 @endsection
-@push('page_css')
+<!-- @push('page_css')
     <link href="{{ asset('vendor/summernote/dist/summernote.min.css') }}" rel="stylesheet">
 @endpush
 @push('page_scripts')
@@ -71,5 +71,5 @@
                 });
             });
     </script>
-@endpush
+@endpush -->
 

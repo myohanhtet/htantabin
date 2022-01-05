@@ -13,7 +13,11 @@
     <p>အလွဴခံပုဂၢိဳလ္  @if(isset(request()->sayadaw)) <u> {{ uni2zg(request()->sayadaw) }} </u> @else .............. @endif </p>
     <hr><p></p>
     @foreach($luckys as $lucky)
-        <p><strong>ေငြပေဒသာ {{ en_number($lucky['amount']) }} ႏွင့္ {{ uni2zg($lucky['mtl']) }}</strong>{{ uni2zg($lucky['donar']) }}| {{ uni2zg($lucky['address']) }} (ေျပစာအမွတ္ {{ en_number($lucky['id']) }} )</p>
+        <p><strong>ေငြပေဒသာ {{ en_number($lucky['amount']) }} ႏွင့္ {{ uni2zg($lucky['mtl']) }}</strong> 
+        </p>
+        <p>{{ uni2zg($lucky['donor']) }}</p>
+         <p>{{ uni2zg($lucky['address']) }} (ေျပစာအမွတ္ {{ en_number($lucky['id']) }} )</p>
+        <p></p>
     @endforeach
     <hr><p></p><p></p><p></p>
     <p>ေငြပေဒသာစုစုေပါင္း : {{ en_number($luckys->sum('amount')) }} က်ပ္</p>

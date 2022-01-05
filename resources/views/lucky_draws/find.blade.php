@@ -31,7 +31,7 @@
                     <hr>
                     <div class="text-center">
                         @if(isset($fileName))
-                            <object id="documentId" data="{{ url('invoices/lucky_list') .'/' .$fileName }}" type="application/pdf" width="1520" height="1024">
+                            <object id="documentId" data="{{ url('invoices/lucky_list') .'/' .$fileName }}" type="application/pdf" width="800" height="1000">
                                 <p>Cannot load PDF</p>
                             </object>
                         @endif

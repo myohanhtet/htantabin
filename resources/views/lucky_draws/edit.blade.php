@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="address">{{ __('lucky.address') }}</label>
-                                <textarea name="address" id="address" class="form-control">{{ __('lucky.address') }}</textarea>
+                                <textarea name="address" id="address" class="form-control">{{ $lucky->address }}</textarea>
                             </div>
                         </div>
                     </div>
