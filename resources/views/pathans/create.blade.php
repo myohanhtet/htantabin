@@ -29,15 +29,18 @@
                             <textarea name="material" id="material" class="rounded-0 form-control">{{ old('material') }}</textarea>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="donor">{{ __('pathan.donor name') }}</label>
-                            <textarea name="donor" id="donor" class="rounded-0 form-control">
-                                {{ old('donor') }}
-                            </textarea>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="address">{{ __('pathan.donor name') }}</label>
+                                <textarea name="donor" id="donor" class="rounded-0 form-control">{{ old('donor') }}</textarea>
+                            </div>
                         </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-12">--}}
+{{--                            <label for="donor">{{ __('pathan.donor name') }}</label>--}}
+{{--                            <textarea name="donor" id="donor" class="rounded-0 form-control">{{ old('donor') }}</textarea>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="row">
                         <div class="col-12">
@@ -57,17 +60,5 @@
     </div>
 
 @endsection
-<!-- @push('page_css')
-    <link href="{{ asset('vendor/summernote/dist/summernote.min.css') }}" rel="stylesheet">
-@endpush
-@push('page_scripts')
-    <script src="{{ asset('vendor/summernote/dist/summernote.min.js') }}"></script>
-    <script>
-            $(document).ready(function() {
-                $('#editor1').summernote({
-                    height: 150,
-                });
-            });
-    </script>
-@endpush -->
+
 

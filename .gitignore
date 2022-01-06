@@ -1,7 +1,9 @@
 /node_modules
 /public/hot
 /public/storage
-/public/invoices/*
+/public/invoices/pathans/*
+/public/invoices/lucky_draw/*
+/public/invoices/lucky_list/*
 /storage/*.key
 /vendor
 .env

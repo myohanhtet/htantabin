@@ -53,7 +53,7 @@ class LuckyDrawController extends Controller
     {
 
         $amount = ($request->amount == '') ? 0 : $request->amount;
-        $mtl_value = ($request->mtl_value == '') ? 0 : $request->amount;
+        $mtl_value = ($request->mtl_value == '') ? 0 : $request->mtl_value;
 
         $lucky_draw = LuckyDraw::create([
             'amount' => $amount,
@@ -65,7 +65,7 @@ class LuckyDrawController extends Controller
             'user_id' => auth()->id(),
             'times'=> setting('times')
         ]);
-        
+
         // $lucky_draw = LuckyDraw::create($request->validated() +
         //     [
         //         'lucky_no' => $request->lucky_no,
@@ -115,7 +115,7 @@ class LuckyDrawController extends Controller
         $amount = (request()->amount == '') ? 0 : request()->amount;
         $mtl_value = (request()->mtl_value == '') ? 0 : request()->mtl_value;
         // dd($mtl_value);
-        
+
         $lucky->update([
             'amount' => $amount,
             'donor' => request()->donor,
