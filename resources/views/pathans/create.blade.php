@@ -20,13 +20,13 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="mtl_value">{{ __('pathan.material amount') }}</label>
-                            <input name="mtl_value" value="{{ old('mtl_value') }}" id="mtl_value" type="text" class="rounded-0 form-control" placeholder="{{ __('pathan.material amount') }}">
+                            <input value='0' name="mtl_value" value="{{ old('mtl_value') }}" id="mtl_value" type="text" class="rounded-0 form-control" placeholder="{{ __('pathan.material amount') }}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <label for="material">{{ __('pathan.material') }}</label>
-                            <textarea name="material" id="material" class="rounded-0 form-control">{{ old('material') }}</textarea>
+                            <textarea name="material" id="material" class="rounded-0 form-control"> - {{ old('material') }}</textarea>
                         </div>
                     </div>
                         <div class="row">

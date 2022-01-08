@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset("images/favicon/apple-touch-icon.png") }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset("images/favicon/favicon-32x32.png") }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("images/favicon/favicon-16x16.png") }}">
-    <link rel="manifest" href="{{ asset("images/favicon/site.webmanifest") }}">
-    <link rel="mask-icon" href="{{ asset("images/favicon/safari-pinned-tab.svg") }}" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css"> -->
-   
+
 
 
     @yield('third_party_stylesheets')
