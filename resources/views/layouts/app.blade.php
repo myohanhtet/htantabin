@@ -15,6 +15,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("images/favicon/favicon-16x16.png") }}">
     <link rel="manifest" href="{{ asset("images/favicon/site.webmanifest") }}">
     <link rel="mask-icon" href="{{ asset("images/favicon/safari-pinned-tab.svg") }}" color="#5bbad5">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css"> -->
+   
+
 
     @yield('third_party_stylesheets')
     @stack('page_css')
@@ -107,6 +110,8 @@
 @yield('third_party_scripts')
 
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>
+
 <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>

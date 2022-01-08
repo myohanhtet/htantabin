@@ -69,16 +69,4 @@
 
 @endsection
 
-@push('page_css')
-    <link href="{{ asset('vendor/summernote/dist/summernote.min.css') }}" rel="stylesheet">
-@endpush
-@push('page_scripts')
-    <script src="{{ asset('vendor/summernote/dist/summernote.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#editor1').summernote({
-                height: 150,
-            });
-        });
-    </script>
-@endpush
+
