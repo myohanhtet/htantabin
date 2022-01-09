@@ -25,7 +25,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 'key' => 'luckydraw-invoice-title-three',
-                'value' => 'စာရေးတံမဲ လောင်းလှူပူဇော်ပွဲ၊ စာရေးတံမဲ လက်ခံဖြတ်ပိုင်'
+                'value' => 'စာရေးတံမဲ လောင်းလှူပူဇော်ပွဲ၊ စာရေးတံမဲ လက်ခံဖြတ်ပိုင်း'
             ],
             [
                 'key' => 'pathan-invoice-title-one',

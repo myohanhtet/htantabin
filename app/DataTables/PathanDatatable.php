@@ -24,7 +24,13 @@ class PathanDatatable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', 'pathans.action')
-            ->rawColumns(['donor','action']);
+            ->rawColumns(['donor','action'])
+            ->editColumn('created_at', function ($query){
+                return \Carbon\Carbon::parse($query->created_at)->toDayDateTimeString();
+            })
+            ->editColumn('updated_at', function ($query){
+                return \Carbon\Carbon::parse($query->updated_at)->toDayDateTimeString();
+            });
     }
 
     /**
@@ -35,7 +41,8 @@ class PathanDatatable extends DataTable
      */
     public function query(Pathan $model)
     {
-        return $model->newQuery()->with('user')->orderBy('id', 'desc');
+        return $model->newQuery()
+            ->with('user')->orderBy('id', 'desc');
     }
 
     /**

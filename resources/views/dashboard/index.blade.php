@@ -3,6 +3,10 @@
 @section('content')
 
     <div class="content-header">
+        <div class="col-sm-12">
+            <h1 class="m-0 text-center" style="font-weight: bold;">{{ setting('luckydraw-invoice-title-one') }}</h1>
+        </div>
+        <br><br>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
