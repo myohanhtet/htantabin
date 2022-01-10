@@ -84,7 +84,7 @@ class LuckyDrawDatatable extends DataTable
             'mtl_value' => ['data' => 'mtl_value','title' =>__('lucky.material amount')],
             'donor' => ['data' => 'donor','title' =>__('lucky.donor name')],
             'address' => ['data' => 'address','title' =>__('lucky.address')],
-            'times' => ['data' => 'times','title' =>__('lucky.times')],
+            // 'times' => ['data' => 'times','title' =>__('lucky.times')],
             'amount' => ['data' => 'amount','title' =>__('lucky.amount')],
             'created by' => ['data'=>'user.name','title' =>__('lucky.created by')],
             'created_at' => ['data'=>'created_at','title' =>__('lucky.created at')],
