@@ -30,6 +30,12 @@
     </a>
 </li>
 @endcan
+<li class="nav-item">
+    <a href="{{ route('luckys.count') }}" class="rounded-0 nav-link {{ request()->routeIs('luckys.count') ? 'active' : ''}}">
+        <i class="nav-icon fas fa-chart-pie"></i>
+        <p>လက်ကျန်ပြေစာ</p>
+    </a>
+</li>
 @can('view_users')
 <li class="nav-item">
     <a href="{{ route('users.index') }}" class="rounded-0 nav-link {{ request()->routeIs('users.*') ? 'active' : ''}}">

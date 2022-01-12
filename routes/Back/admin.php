@@ -14,3 +14,6 @@ Route::resource('roles',RoleController::class);
 Route::resource('permissions',PermissionController::class);
 Route::resource('dashboard',DashboardController::class);
 Route::resource('pathans',PathanController::class);
+
+Route::get('luckys/count','DashboardController@counts')->name('luckys.count');
+
