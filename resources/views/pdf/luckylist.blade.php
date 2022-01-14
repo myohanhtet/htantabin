@@ -11,19 +11,15 @@
     <h1 style="text-align:center;line-height:2;">အဝင္( @if(isset(request()->a_win)) {{ en_number(request()->a_win) }}  @else ..... @endif )</h1>
     <h1>မဲနံပါတ္ {{ en_number($lucky_number) }}</h1>
     <p>အလွဴခံပုဂၢိဳလ္  @if(isset(request()->sayadaw)) <u> {{ uni2zg(request()->sayadaw) }} </u> @else .............. @endif </p>
-    <hr><p></p>
+    <!-- <p></p> -->
     @foreach($luckys as $lucky)
         <p><strong>ေငြပေဒသာ {{ en_number($lucky['amount']) }} ႏွင့္ {{ uni2zg($lucky['mtl']) }}</strong> 
-        </p>
-        <p>{{ uni2zg($lucky['donor']) }}</p>
-         <p>{{ uni2zg($lucky['address']) }} (ေျပစာအမွတ္ {{ en_number($lucky['id']) }} )</p>
-        <p></p>
+        <br>{{ uni2zg($lucky['donor']) }}<br>{{ uni2zg($lucky['address']) }} (ေျပစာအမွတ္ {{ en_number($lucky['id']) }} )</p>
+        <!-- <p></p> -->
     @endforeach
-    <hr><p></p><p></p><p></p>
-    <p>ေငြပေဒသာစုစုေပါင္း : {{ en_number($luckys->sum('amount')) }} က်ပ္</p>
-    <p>လွဴဖြယ္ပစၥည္းတန္ဖိုးစုစုေပါင္း : {{ en_number($luckys->sum('mtl_value'))}} က်ပ္</p>
+    <hr><p></p>
+    <p>ေငြပေဒသာစုစုေပါင္း : {{ en_number($luckys->sum('amount')) }} က်ပ္ | လွဴဖြယ္ပစၥည္းတန္ဖိုးစုစုေပါင္း : {{ en_number($luckys->sum('mtl_value'))}} က်ပ္</p>
 
-    <p>ေစာင္ေရေပါင္း ({{ en_number($luckys->count()) }}) ေစာင္</p>
-    <p>ႏွစ္ရပ္ေပါင္းတန္ဖိုး ({{ en_number($luckys->sum('amount')+ $luckys->sum('mtl_value') )  }}) က်ပ္</p>
+    <p>ေစာင္ေရေပါင္း ({{ en_number($luckys->count()) }}) ေစာင္ | ႏွစ္ရပ္ေပါင္းတန္ဖိုး ({{ en_number($luckys->sum('amount')+ $luckys->sum('mtl_value') )  }}) က်ပ္</p>
 </body>
 </html>
