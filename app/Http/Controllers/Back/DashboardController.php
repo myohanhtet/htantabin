@@ -22,7 +22,6 @@ class DashboardController extends Controller
 
     	$empty_luckys = DB::table('lucky_draws')
     	->select('amount', DB::raw('count(*) as total'))
-    	// ->select('amount',DB::raw('sum(amount)'))
     	->where('lucky_no',"")
     	->groupBy('amount')->get();
 
