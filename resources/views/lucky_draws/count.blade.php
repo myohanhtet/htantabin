@@ -10,7 +10,7 @@
                 <div class="card-header border-0">
                     <h3 class="card-title">လက်ကျန်ပြေစာ</h3>
                     <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-sm">
+                        <a href="{{ route('luckys.empty_list_download') }}" class="btn btn-tool btn-sm">
                             <i class="fas fa-download"></i>
                         </a>
                         <a href="#" class="btn btn-tool btn-sm">
@@ -70,7 +70,7 @@
                         <div class="card-header border-0">
                             <h3 class="card-title">မဲများ</h3>
                             <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm">
+                                <a href="{{ route('luckys.list_download') }}" class="btn btn-tool btn-sm">
                                     <i class="fas fa-download"></i>
                                 </a>
                                 <a href="#" class="btn btn-tool btn-sm">
