@@ -15,7 +15,7 @@
             </div>
 
             <div class="text-center">
-                <object id="documentId" data="{{ url('invoices/pathans')."/".$fileName }}" type="application/pdf" width="800" height="600">
+                <object id="documentId" data="{{ url('invoices/pathans').'/'.$fileName }}" type="application/pdf" width="800" height="600">
                     <p>Cannot load PDF</p>
                 </object>
             </div>

@@ -42,9 +42,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="donor">{{ __('lucky.donor name') }}</label>
-                                <textarea name="donor" id="editor1" class="form-control">
-                                {{ $lucky->donor }}
-                            </textarea>
+                                <textarea name="donor" id="editor1" class="form-control">{{ $lucky->donor }}</textarea>
                             </div>
                         </div>
 

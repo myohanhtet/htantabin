@@ -9,7 +9,6 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class LuckyExport implements  FromCollection,WithHeadings
 {
-    use Exportable;
 
     public function collection()
     {
