@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lucky = LuckyDraw::all();
+        $lucky = Invoice::all();
         return view('welcome',['lucky'=>$lucky]);
     }
 }

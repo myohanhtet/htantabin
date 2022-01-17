@@ -7,7 +7,7 @@ use App\Exports\LuckyExport;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use App\Models\Pathan;
 use DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,7 +16,7 @@ class DashboardController extends Controller
 {
     public function index(){
 
-    	$lucky = LuckyDraw::all();
+    	$lucky = Invoice::all();
     	$pathan = Pathan::all();
 
         return view('dashboard.index', ['lucky'=> $lucky,'pathan' => $pathan]);
@@ -25,15 +25,13 @@ class DashboardController extends Controller
     public function counts() {
 
     	$empty_luckys = DB::table('lucky_draws')
-    	->select('amount', DB::raw('count(*) as total'))
-    	// ->select('amount',DB::raw('sum(amount)'))
+    	->select('amount', DB::raw('count(*) as total'),DB::raw('SUM(amount) as total_amount'))
     	->where('lucky_no',"")
     	->groupBy('amount')->get();
 
         $lucky_numbers = DB::table('lucky_draws')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
             ->groupBy('lucky_no')
-            ->orderBy('lucky_no')
             ->paginate(15);
 
     	return view('lucky_draws.count', ['empty_luckys' => $empty_luckys,'lucky_numbers' =>$lucky_numbers]);

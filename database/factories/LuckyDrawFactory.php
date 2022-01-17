@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LuckyDrawFactory extends Factory
@@ -12,7 +12,7 @@ class LuckyDrawFactory extends Factory
      *
      * @var string
      */
-    protected $model = LuckyDraw::class;
+    protected $model = Invoice::class;
 
     /**
      * Define the model's default state.

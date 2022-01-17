@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -35,10 +35,10 @@ class LuckyDrawDatatable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param LuckyDraw $model
+     * @param Invoice $model
      * @return Builder
      */
-    public function query(LuckyDraw $model)
+    public function query(Invoice $model)
     {
         return $model->newQuery()
             ->with('user')

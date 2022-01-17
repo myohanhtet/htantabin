@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{!! ($empty_lucky->amount == '0')? 'ပစ္စည်း' : en_number($empty_lucky->amount) !!}</td>
                                 <td>{!! en_number($empty_lucky->total) !!}</td>
-                                <td>{!! en_number($empty_lucky->total*$empty_lucky->amount) !!}</td>
+                                <td>{!! en_number($empty_lucky->total_amount) !!}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -41,23 +41,11 @@
                         <tr>
                             <td></td>
                             <td>{!! en_number($empty_luckys->sum('total')) !!}</td>
-                            <td>
-                                @php
-                                    $sum = 0;
-                                    foreach($empty_luckys  as $value)
-                                    {
-                                       $sum+= $value->amount*$value->total;
-                                    }
-                                    echo en_number($sum);
-                                @endphp
-                            </td>
+                            <td>{!! en_number($empty_luckys->sum('total_amount')) !!}</td>
 
                         </tr>
                         </tfoot>
                     </table>
-{{--                    <div class="pt-2 container-fluid">--}}
-{{--                        {{ $empty_luckys->links() }}--}}
-{{--                    </div>--}}
                 </div>
             </div>
             </div>

@@ -5,7 +5,7 @@ namespace App\Traits;
 
 
 use App\Classes\MmTcpdf;
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -39,7 +39,7 @@ trait PrintPdf
 
 
         if (\request()->route()->getName() == "lucky.show" || \request()->route()->getName() == 'lucky.update' || \request()->route()->getName() == 'lucky.store'){
-            $luckydraw = LuckyDraw::find($id);
+            $luckydraw = Invoice::find($id);
 
 
             // Create QR code
@@ -71,7 +71,7 @@ trait PrintPdf
             $fileName = $id.'_'.date('Y_m_i_s').'.pdf';
         } elseif (\request()->route()->getName() == "lucky.search") {
             $pdf->SetMargins(30, 0, 10, true);
-            $luckys = LuckyDraw::where('lucky_no',$id)
+            $luckys = Invoice::where('lucky_no',$id)
                 ->where('times',setting('times'))->get();
             $view = view('pdf.luckylist',['luckys'=>$luckys,'lucky_number' => $id]);
             $fileLocation = public_path('invoices/lucky_list/');

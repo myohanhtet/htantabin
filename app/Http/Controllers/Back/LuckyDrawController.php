@@ -6,7 +6,7 @@ use App\DataTables\LuckyDrawDatatable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLuckyDrawRequest;
 use App\Http\Requests\UpdateLuckyDrawRequest;
-use App\Models\LuckyDraw;
+use App\Models\Invoice;
 use App\Traits\Authorizable;
 use App\Traits\PrintPdf;
 use Brian2694\Toastr\Facades\Toastr;
@@ -55,7 +55,7 @@ class LuckyDrawController extends Controller
         $amount = ($request->amount == '') ? 0 : $request->amount;
         $mtl_value = ($request->mtl_value == '') ? 0 : $request->mtl_value;
 
-        $lucky_draw = LuckyDraw::create([
+        $lucky_draw = Invoice::create([
             'amount' => $amount,
             'donor' => $request->donor,
             'mtl' => $request->mtl,
@@ -66,7 +66,7 @@ class LuckyDrawController extends Controller
             'times'=> setting('times')
         ]);
 
-        // $lucky_draw = LuckyDraw::create($request->validated() +
+        // $lucky_draw = Invoice::create($request->validated() +
         //     [
         //         'lucky_no' => $request->lucky_no,
         //         'user_id' => auth()->id(),
@@ -83,10 +83,10 @@ class LuckyDrawController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param LuckyDraw $lucky
+     * @param Invoice $lucky
      * @return string
      */
-    public function show(LuckyDraw $lucky)
+    public function show(Invoice $lucky)
     {
         $fileName = $this->printPdf($lucky->id);
         return view('lucky_draws.show',['fileName' => $fileName , 'id' => $lucky->id]);
@@ -95,10 +95,10 @@ class LuckyDrawController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param LuckyDraw $lucky
+     * @param Invoice $lucky
      * @return Application|Factory|View
      */
-    public function edit(LuckyDraw $lucky)
+    public function edit(Invoice $lucky)
     {
         return view('lucky_draws.edit',['lucky'=> $lucky]);
     }
@@ -107,10 +107,10 @@ class LuckyDrawController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateLuckyDrawRequest $request
-     * @param LuckyDraw $lucky
+     * @param Invoice $lucky
      * @return Application|Factory|View
      */
-    public function update(Request $request, LuckyDraw $lucky)
+    public function update(Request $request, Invoice $lucky)
     {
         $amount = (request()->amount == '') ? 0 : request()->amount;
         $mtl_value = (request()->mtl_value == '') ? 0 : request()->mtl_value;
@@ -136,10 +136,10 @@ class LuckyDrawController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param LuckyDraw $lucky
+     * @param Invoice $lucky
      * @return RedirectResponse
      */
-    public function destroy(LuckyDraw $lucky)
+    public function destroy(Invoice $lucky)
     {
         Log::info("Luck ID ". $lucky->id ." deleted by ". auth()->user()->name );
         $lucky->delete();
