@@ -24,12 +24,12 @@ class DashboardController extends Controller
 
     public function counts() {
 
-    	$empty_luckys = DB::table('lucky_draws')
+    	$empty_luckys = DB::table('invoices')
     	->select('amount', DB::raw('count(*) as total'),DB::raw('SUM(amount) as total_amount'))
     	->where('lucky_no',"")
     	->groupBy('amount')->get();
 
-        $lucky_numbers = DB::table('lucky_draws')
+        $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
             ->groupBy('lucky_no')
             ->paginate(15);

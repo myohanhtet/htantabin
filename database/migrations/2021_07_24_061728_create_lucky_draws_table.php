@@ -13,7 +13,7 @@ class CreateLuckyDrawsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lucky_draws', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('lucky_no')->nullable();
             $table->integer('amount')->nullable();
@@ -35,6 +35,6 @@ class CreateLuckyDrawsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lucky_draws');
+        Schema::dropIfExists('invoices');
     }
 }

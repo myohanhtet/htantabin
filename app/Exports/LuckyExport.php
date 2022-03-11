@@ -12,7 +12,7 @@ class LuckyExport implements  FromCollection,WithHeadings
 
     public function collection()
     {
-        return $lucky_numbers = DB::table('lucky_draws')
+        return $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
             ->groupBy('lucky_no')
             ->orderBy('lucky_no')->get();
