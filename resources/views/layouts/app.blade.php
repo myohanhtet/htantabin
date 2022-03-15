@@ -16,9 +16,6 @@
     <link rel="manifest" href="{{ asset('images/favicon/site.webmanifest') }}">
     <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css"> -->
-
-
-
     @yield('third_party_stylesheets')
     @stack('page_css')
 </head>

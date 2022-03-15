@@ -25,6 +25,18 @@ class HomeController extends Controller
     public function index()
     {
         $lucky = Invoice::all();
-        return view('welcome',['lucky'=>$lucky]);
+        // return view('welcome',['lucky'=>$lucky]);
+        return view('home',['lucky'=>$lucky]);  
+    }
+
+    public function donors()
+    {
+        return view('donors',['donors'=>Invoice::paginate(15)]);
+    }
+
+    public function search(Request $request)
+    {
+        $donor = $request->input('donor');
+        return view('donors',['donors' => Invoice::whereLike('donor',$donor)->paginate(15)]);
     }
 }
