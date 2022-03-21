@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Response;
 
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@index')->name('frontend.index');
 
-Route::get('donors','HomeController@donors')->name('donors');
+Route::get('donors','HomeController@donors')->name('frontend.donors');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

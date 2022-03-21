@@ -34,32 +34,16 @@ body {
 </style>
 <meta name="theme-color" content="#563d7c">
 
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet">
-  </head>
+</head>
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">ထန်းတပင်ကျောင်းတိုက်</h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="{{ url('/') }}">မူလစာမျက်နှာ</a>
-    <a class="p-2 text-dark" href="{{ route('donors') }}">အလှူရှင်များ</a>
+    
+    <a class="p-2 {{ request()->routeIs('frontend.index') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.index') }}">မူလစာမျက်နှာ</a>
+
+    <a class="p-2 {{ request()->routeIs('frontend.donors') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.donors') }}">အလှူရှင်များ</a>
+
   </nav>
   {{-- <a class="btn btn-outline-primary" href="{{ route('donors') }}">အလှူရှင်များ</a> --}}
 </div>
