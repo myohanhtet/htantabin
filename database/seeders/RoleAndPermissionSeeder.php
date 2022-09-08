@@ -74,7 +74,6 @@ class RoleAndPermissionSeeder extends Seeder
             'password' => '12345678'
         ]);
 
-
         $lucky = User::create([
             'name' => 'Lucky',
             'email' => 'lucky@gmail.com',
@@ -89,14 +88,11 @@ class RoleAndPermissionSeeder extends Seeder
             'password' => '12345678'
         ]);
 
-
-
         $superadmin->assignRole('superuser');
         $admin->assignRole('admin');
         $lucky->assignRole('lucky');
         $pathan->assignRole('pathan');
 
     }
-
 
 }

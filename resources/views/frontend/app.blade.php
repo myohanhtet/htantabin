@@ -12,7 +12,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
 
     <!-- Bootstrap core CSS -->
-<link href="{!! asset('/css/bootstrap.min.css') !!}" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link href="{!! asset('/css/bootstrap.min.css') !!}" rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -39,7 +39,7 @@ body {
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">ထန်းတပင်ကျောင်းတိုက်</h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    
+
     <a class="p-2 {{ request()->routeIs('frontend.index') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.index') }}">မူလစာမျက်နှာ</a>
 
     <a class="p-2 {{ request()->routeIs('frontend.donors') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.donors') }}">အလှူရှင်များ</a>
@@ -49,7 +49,7 @@ body {
 </div>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-6">ရန်ကုန်တိုင်းဒေသကြီး၊ ကမာရွတ်မြို့နယ်၊ ထန်းတပင်ကျောင်းတိုက်</h1>
+  <h1 class="display-6" style="line-height: 150%">ရန်ကုန်တိုင်းဒေသကြီး၊ ကမာရွတ်မြို့နယ်၊ ထန်းတပင်ကျောင်းတိုက်</h1>
   <p class="lead">(၁၀၆)ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်၊ စာရေးတံမဲလောင်းလှူပွဲ</p>
 </div>
 

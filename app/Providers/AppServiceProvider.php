@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        if(env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
+
         Paginator::useBootstrap();
 
         Builder::macro("whereLike", function($attributes,string $searchTerm){

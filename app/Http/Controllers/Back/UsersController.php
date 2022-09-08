@@ -14,7 +14,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
@@ -60,7 +59,6 @@ class UsersController extends Controller
 
         $user->assignRole($request->role);
         session(['success' =>"Successful created user"]);
-        // \flash("Successful created user")->success();
 
         return redirect()->route("users.index");
     }
@@ -100,7 +98,6 @@ class UsersController extends Controller
         $user->update($request->validated());
         $user->syncRoles($request->role);
         session(['success' =>"Successful updated user"]);
-        // \flash("Successful updated user")->success();
         return redirect()->route('users.index');
     }
 
@@ -115,7 +112,6 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
         session(['success' =>"Successful deleted user"]);
-        // \flash("Successful deleted user")->success();
         return redirect()->route('users.index');
 
     }

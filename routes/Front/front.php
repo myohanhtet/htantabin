@@ -10,4 +10,3 @@ Route::get('donors','HomeController@donors')->name('frontend.donors');
 
 Route::get('/lang/{locale}','LocalizationController@lang')->name('lang');
 Route::get('donors/search','HomeController@search')->name('donors.search');
-
