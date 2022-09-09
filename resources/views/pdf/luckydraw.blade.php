@@ -11,7 +11,7 @@
     <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-one')) }}</p>
     <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-two')) }}</p>
     <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-three')) }}</p>
-    <img src="{{$data}}" width="200" height="200">
+{{--    <img src="{{$data}}" width="200" height="200">--}}
 <table>
     <tbody>
     <tr>

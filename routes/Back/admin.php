@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Back\DonorController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,7 +21,11 @@ Route::get('lucky_list','DashboardController@LuckyList')->name('luckys.list_down
 Route::get('empty_list','DashboardController@EmptyList')->name('luckys.empty_list_download');
 
 
-Route::post('donors/upload','DonorController@upload')->name('donors.upload');
-Route::get('donors/ajax-search','DonorController@ajaxSearch');
 
-
+Route::controller(DonorController::class)
+    ->as('donors.')
+    ->group(function () {
+        Route::post('donors/upload','DonorController@upload')->name('upload');
+        Route::get('donors/ajax-search','DonorController@ajaxSearch')->name('search.name');
+//        Route::get('donors/ajax-search','DonorController@ajaxSearch')->name('search.address');
+    });

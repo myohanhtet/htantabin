@@ -61,16 +61,31 @@
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
-        var route = "{{ url('admin/donors/ajax-search') }}";
-        $('#donor').typeahead({
-            source: function (query, process) {
+        var route = "{{ route('donors.search.name') }}";
+
+        $('#donor').typeahead(
+            {
+                source: function (query, process)
+            {
                 return $.get(route, {
-                    query: query
-                }, function (data) {
+                    name: query
+                },function (data) {
                     return process(data);
                 });
             }
         });
+
+        $('#address').typeahead(
+            {
+                source: function (query, process)
+                {
+                    return $.get(route, {
+                        address: query
+                    },function (data) {
+                        return process(data.map(x=>x.address));
+                    });
+                }
+            });
     </script>
 
 @endpush

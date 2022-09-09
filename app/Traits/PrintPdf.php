@@ -41,32 +41,31 @@ trait PrintPdf
         if (\request()->route()->getName() == "lucky.show" || \request()->route()->getName() == 'lucky.update' || \request()->route()->getName() == 'lucky.store'){
             $luckydraw = Invoice::find($id);
 
-
             // Create QR code
-            $writer = new PngWriter();
-
-// Create QR code
-            $qrCode = QrCode::create('Data')
-                ->setEncoding(new Encoding('UTF-8'))
-                ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-                ->setSize(300)
-                ->setMargin(10)
-                ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
-                ->setForegroundColor(new Color(0, 0, 0))
-                ->setBackgroundColor(new Color(255, 255, 255));
-
-// Create generic logo
-            $logo = Logo::create(asset('images/logo.png'))
-                ->setResizeToWidth(50);
-
-// Create generic label
-            $label = Label::create('Label')
-                ->setTextColor(new Color(255, 0, 0));
-
-            $result = $writer->write($qrCode, $logo, $label);
-            $data = $result->getDataUri();
+//            $writer = new PngWriter();
+//
+//// Create QR code
+//            $qrCode = QrCode::create('Data')
+//                ->setEncoding(new Encoding('UTF-8'))
+//                ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+//                ->setSize(300)
+//                ->setMargin(10)
+//                ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+//                ->setForegroundColor(new Color(0, 0, 0))
+//                ->setBackgroundColor(new Color(255, 255, 255));
+//
+//// Create generic logo
+//            $logo = Logo::create(asset('images/logo.png'))
+//                ->setResizeToWidth(50);
+//
+//// Create generic label
+//            $label = Label::create('Label')
+//                ->setTextColor(new Color(255, 0, 0));
+//
+//            $result = $writer->write($qrCode, $logo, $label);
+//            $data = $result->getDataUri();
             $pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
-            $view = view('pdf.luckydraw',['luckydraw' => $luckydraw,'data' =>$data ]);
+            $view = view('pdf.luckydraw',['luckydraw' => $luckydraw]);
             $fileLocation = public_path('invoices/lucky_draw/');
             $fileName = $id.'_'.date('Y_m_i_s').'.pdf';
         } elseif (\request()->route()->getName() == "lucky.search") {

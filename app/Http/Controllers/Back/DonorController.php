@@ -106,9 +106,19 @@ class DonorController extends Controller
     }
 
     public function ajaxSearch(Request $request){
-        $query = $request->get('query');
-        $filterSerert = Donor::where('name','LIKE','%'.$query.'%')
-            ->orWhere('address','LIKE','%'.$query.'%')->get();
-        return response()->json($filterSerert);
+
+        $nameQuery = $request->get('name');
+        $addressQuery = $request->get('address');
+        if($nameQuery){
+            $filterSearch = Donor::where('name','LIKE','%'.$nameQuery.'%')->get('name');
+        }
+        else if ($addressQuery){
+            $filterSearch = Donor::where('address','LIKE','%'.$addressQuery.'%')->get('address');
+        } else {
+            abort(404);
+        }
+        return response()->json($filterSearch);
+
+
     }
 }
