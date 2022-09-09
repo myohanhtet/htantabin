@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Imports\DonorImport;
 use App\Models\Donor;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -95,30 +96,44 @@ class DonorController extends Controller
         }
 
         try {
-            Excel::import(new DonorImport(),$request->donor_file,'UTF-8');
+
+            if($request->truncate) {
+                DB::table('donors')->truncate();
+                session(['success' => ":) Record deleted successfully."]);
+                return back();
+            }
+
+            Excel::import(new DonorImport(),$request->donor_file);
             session(['success' => ":) Upload Successfully."]);
             return back();
         } catch (\Exception $exceptione){
+            \Log::error("Exception In file import: ". $exceptione->getMessage());
             session(['error' => $exceptione->getMessage()]);
             return back();
         }
 
     }
 
-    public function ajaxSearch(Request $request){
-
+    public function ajaxSearch(Request $request): \Illuminate\Http\JsonResponse
+    {
         $nameQuery = $request->get('name');
         $addressQuery = $request->get('address');
+        $materialQuery = $request->get('material');
         if($nameQuery){
-            $filterSearch = Donor::where('name','LIKE','%'.$nameQuery.'%')->get('name');
+            $filterSearch = Donor::where('name','LIKE','%'.$nameQuery.'%')
+                ->get('name');
         }
         else if ($addressQuery){
-            $filterSearch = Donor::where('address','LIKE','%'.$addressQuery.'%')->get('address');
-        } else {
+            $filterSearch = Donor::where('address','LIKE','%'.$addressQuery.'%')
+                ->get('address');
+        }
+        else if($materialQuery) {
+            $filterSearch = Donor::where('material','LIKE','%'.$materialQuery.'%')
+                ->get('material');
+        }
+        else {
             abort(404);
         }
         return response()->json($filterSearch);
-
-
     }
 }

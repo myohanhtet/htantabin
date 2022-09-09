@@ -14,6 +14,7 @@ class Donor extends Model
     protected $fillable = [
         'name',
         'address',
+        'material',
         'email',
         'phone',
         'times'

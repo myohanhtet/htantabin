@@ -48,7 +48,6 @@
                         <div class="pt-2">
                             <button class="btn btn-success" type="submit">{{ __('lucky.save') }}</button>
                         </div>
-
                     </form>
                 </div>
                 <!-- /.card-body -->
@@ -86,6 +85,17 @@
                     });
                 }
             });
-    </script>
 
+        $('#mtl').typeahead(
+            {
+                source: function (query, process)
+                {
+                    return $.get(route, {
+                        material: query
+                    },function (data) {
+                        return process(data.map(x=>x.material));
+                    });
+                }
+            });
+    </script>
 @endpush
