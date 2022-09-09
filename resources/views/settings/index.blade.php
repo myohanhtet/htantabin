@@ -12,25 +12,17 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password">
+                                <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password" required>
                             </div>
-{{--                            <div class="form-group">--}}
-{{--                                <div class="input-group">--}}
-{{--                                    <div class="custom-file">--}}
-{{--                                        <input type="file" class="custom-file-input input-group-sm" id="exampleInputFile">--}}
-{{--                                        <label class="custom-file-label input-group-sm" for="exampleInputFile">Choose file</label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="input-group-append">--}}
-{{--                                        <span class="input-group-text">Upload</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div class="form-group input-group-sm">
+
+                            <div class="form-group">
+
                                 <div class="custom-file">
-                                    <input type="file" name="donor_file" class="custom-file-input" id="customFile">
+                                    <input type="file" class="custom-file-input" id="customFile">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
                             </div>
+
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-outline-success">Submit</button>
@@ -56,5 +48,6 @@
 @endsection
 
 @push('page_scripts')
+
     {{$dataTable->scripts()}}
 @endpush

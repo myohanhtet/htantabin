@@ -18,6 +18,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/css/autoComplete.min.css"> -->
     @yield('third_party_stylesheets')
     @stack('page_css')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -105,6 +106,7 @@
 </div>
 
 @yield('third_party_scripts')
+
 
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>
