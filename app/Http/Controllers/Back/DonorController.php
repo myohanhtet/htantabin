@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Imports\DonorImport;
+use App\Models\Donor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
@@ -102,5 +103,12 @@ class DonorController extends Controller
             return back();
         }
 
+    }
+
+    public function ajaxSearch(Request $request){
+        $query = $request->get('query');
+        $filterSerert = Donor::where('name','LIKE','%'.$query.'%')
+            ->orWhere('address','LIKE','%'.$query.'%')->get();
+        return response()->json($filterSerert);
     }
 }
