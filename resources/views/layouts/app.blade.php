@@ -17,6 +17,7 @@
     <link rel="mask-icon" href="{{ asset('images/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
     @yield('third_party_stylesheets')
     @stack('page_css')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -104,6 +105,7 @@
 </div>
 
 @yield('third_party_scripts')
+
 
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
