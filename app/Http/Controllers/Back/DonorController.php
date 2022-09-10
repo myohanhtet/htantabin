@@ -104,8 +104,11 @@ class DonorController extends Controller
             }
 
             Excel::import(new DonorImport(),$request->donor_file);
+
             session(['success' => ":) Upload Successfully."]);
+
             return back();
+
         } catch (\Exception $exceptione){
             \Log::error("Exception In file import: ". $exceptione->getMessage());
             session(['error' => $exceptione->getMessage()]);

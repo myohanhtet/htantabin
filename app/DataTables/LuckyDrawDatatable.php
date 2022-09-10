@@ -78,14 +78,15 @@ class LuckyDrawDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => ['data'=>'id', 'title'=> __('lucky.lucky id')],
+//            'id' => ['data'=>'id', 'title'=> __('lucky.lucky id')],
+            'invoice_number' => ['data'=> 'invoice_number','title'=>__('lucky.lucky id')],
             'lucky_no' => ['data'=>'lucky_no', 'title'=> __('lucky.lucky no')],
             'amount' => ['data' => 'amount','title' =>__('lucky.amount')],
             'mtl' => ['data' => 'mtl','title' =>__('lucky.material')],
             'mtl_value' => ['data' => 'mtl_value','title' =>__('lucky.material amount')],
             'donor' => ['data' => 'donor','title' =>__('lucky.donor name')],
             'address' => ['data' => 'address','title' =>__('lucky.address')],
-            // 'times' => ['data' => 'times','title' =>__('lucky.times')],
+//            'times' => ['data' => 'times','title' =>__('lucky.times')],
             'created by' => ['data'=>'user.name','title' =>__('lucky.created by')],
             'created_at' => ['data'=>'created_at','title' =>__('lucky.created at')],
             'updated_at' => ['data'=>'updated_at','title' =>__('lucky.updated at')],

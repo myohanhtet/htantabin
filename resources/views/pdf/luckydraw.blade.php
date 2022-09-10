@@ -16,7 +16,7 @@
     <tbody>
     <tr>
         <td>ေျပစာအမွတ္</td>
-        <td>{{ en_number($luckydraw['id']) }}</td>
+        <td>{{ en_number($luckydraw['invoice_number']) }}</td>
     </tr>
     <tr>
         <td></td>

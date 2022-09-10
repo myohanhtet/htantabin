@@ -17,6 +17,8 @@ class Invoice extends Model
         'donor',
         'address',
         'times',
+        'number',
+        'invoice_number',
         'user_id'
     ];
 
@@ -36,5 +38,16 @@ class Invoice extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model){
+            $model->number = Invoice::where('times',setting('times'))
+                ->max('number') + 1;
+            $model->invoice_number = setting('times') .'-'. str_pad($model->number,5,0,STR_PAD_LEFT);
+        });
+
     }
 }
