@@ -4,9 +4,27 @@
             <div class="content pt-2">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card card-outline card-warning">
-                            <div class="card-body">
-                                {{$dataTable->table(['class' => 'table table-bordered table-sm'])}}
+                        <div class="card">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-head-fixed table-sm">
+                                    <thead>
+                                    <th>Key</th>
+                                    <th>Value</th>
+                                    <th>Action</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($settings as $setting)
+                                    <tr>
+                                        <td>{{ strtoupper($setting->key) }}</td>
+                                        <td>{{ $setting->value }}</td>
+                                        <td><a href="{{ route('setting.edit',$setting->id) }}" class="btn btn-default">
+                                                <i class="fas fa-edit"></i>
+                                            </a></td>
+
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -18,6 +36,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <form action="" enctype="multipart/form-data">
+                                    @csrf
                                 <div class="form-group">
                                     <input type="password" placeholder="Password" class="form-control form-control-sm" required>
                                 </div>
@@ -34,7 +53,6 @@
 
                                 <button name="delete" value="true" type="submit" class="btn btn-danger btn-lg float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
                                     <i class="far fa-trash-alt"></i> Truncate</button>
-
                                 </form>
                             </div>
                     </div>
@@ -42,8 +60,3 @@
             </div><!-- /pt2 -->
 
 @endsection
-
-@push('page_scripts')
-
-    {{$dataTable->scripts()}}
-@endpush

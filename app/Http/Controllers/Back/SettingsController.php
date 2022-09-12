@@ -22,11 +22,12 @@ class SettingsController extends Controller
      * Display a listing of the resource.
      *
      * @param SettingDatatable $dataTable
-     * @return void
+     * @return $model
      */
-    public function index(SettingDatatable $dataTable)
+    public function index()
     {
-        return $dataTable->render('settings.index');
+        $settings = Setting::all();
+        return view('settings.index',['settings'=>$settings]);
     }
 
     /**

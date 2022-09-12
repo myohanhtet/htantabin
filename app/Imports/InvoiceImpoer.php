@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Invoice;
+use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -11,7 +12,7 @@ class InvoiceImpoer implements ToModel,WithHeadingRow
     /**
     * @param array $row
     *
-    * @return \Illuminate\Database\Eloquent\Model|null
+    * @return Model|null
     */
     public function model(array $row)
     {
