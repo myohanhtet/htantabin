@@ -14,6 +14,7 @@ class LuckyExport implements  FromCollection,WithHeadings
     {
         return $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
+            ->where('times',setting('times'))
             ->groupBy('lucky_no')
             ->orderBy('lucky_no')->get();
     }

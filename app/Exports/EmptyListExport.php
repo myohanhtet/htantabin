@@ -14,6 +14,7 @@ class EmptyListExport implements FromCollection,WithHeadings
     {
       return  $empty_luckys = DB::table('invoices')
             ->select('amount', DB::raw('count(*) as total'),DB::raw('SUM(amount) as total_amount'))
+            ->where('times',setting('times'))
             ->where('lucky_no',"")
             ->groupBy('amount')->get();
     }

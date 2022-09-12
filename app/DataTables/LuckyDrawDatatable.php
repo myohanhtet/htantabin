@@ -42,6 +42,7 @@ class LuckyDrawDatatable extends DataTable
     {
         return $model->newQuery()
             ->with('user')
+            ->where('times',setting('times'))
             ->orderBy('id', 'desc');
     }
 

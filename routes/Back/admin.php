@@ -21,7 +21,6 @@ Route::get('lucky_list','DashboardController@LuckyList')->name('luckys.list_down
 Route::get('empty_list','DashboardController@EmptyList')->name('luckys.empty_list_download');
 
 
-
 Route::controller(DonorController::class)
     ->as('donors.')
     ->group(function () {

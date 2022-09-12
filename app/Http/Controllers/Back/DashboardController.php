@@ -16,8 +16,8 @@ class DashboardController extends Controller
 {
     public function index(){
 
-    	$lucky = Invoice::all();
-    	$pathan = Pathan::all();
+    	$lucky = Invoice::where('times',setting('times'))->get();
+    	$pathan = Pathan::where('times',setting('times'))->get();
 
         return view('dashboard.index', ['lucky'=> $lucky,'pathan' => $pathan]);
     }
@@ -27,10 +27,12 @@ class DashboardController extends Controller
     	$empty_luckys = DB::table('invoices')
     	->select('amount', DB::raw('count(*) as total'),DB::raw('SUM(amount) as total_amount'))
     	->where('lucky_no',"")
+            ->where('times',setting('times'))
     	->groupBy('amount')->get();
 
         $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
+            ->where('times',setting('times'))
             ->groupBy('lucky_no')
             ->paginate(15);
 

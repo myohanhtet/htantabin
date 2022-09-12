@@ -1,87 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-6">
             <div class="content pt-2">
-                <div class="card bg-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">Donor List</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-outline card-warning">
+                            <div class="card-body">
+                                {{$dataTable->table(['class' => 'table table-bordered table-sm'])}}
+                            </div>
+                        </div>
                     </div>
-                    <form method="POST" action="{{ route('donors.upload') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password" required>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Invoices</h3>
                             </div>
-
-                            <div class="form-group">
-
-                                <div class="custom-file">
-                                    <input type="file" name="donor_file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <form action="" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" class="form-control form-control-sm" required>
                                 </div>
-                            </div>
+                                    <div class="form-group">
+                                        <input type="file" name="invoice_file">
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-info btn-lg">
+                                            <i class="fas fa-file-upload"></i> Upload
+                                        </button>
+                                        <button class="btn btn-success btn-lg">
+                                            <i class="fas fa-download"></i> Backup</button>
+                                    </div>
 
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-info btn-sm">
-                                <i class="fas fa-upload"></i> Upload
-                            </button>
-                            <button type="submit" name="truncate" value="true"
-                                    class="btn btn-danger btn-sm float-right"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">
-                                <i class="fas fa-trash"></i> Delete</button>
-                        </div>
-                    </form>
+                                <button name="delete" value="true" type="submit" class="btn btn-danger btn-lg float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
+                                    <i class="far fa-trash-alt"></i> Truncate</button>
+
+                                </form>
+                            </div>
+                    </div>
                 </div>
             </div><!-- /pt2 -->
-
-        </div>
-        <div class="col-md-6">
-            <div class="content pt-2">
-                <div class="card bg-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">Invoices</h3>
-                    </div>
-                    <form method="POST" action="{{ route('donors.upload') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password" required>
-                            </div>
-
-                            <div class="form-group">
-
-                                <div class="custom-file">
-                                    <input type="file" name="donor_file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-success">
-                                <i class="fas fa-upload"></i> Upload
-                            </button>
-                            <button type="submit" name="truncate" value="true"
-                                    class="btn btn-outline-danger float-right"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">
-                                <i class="fas fa-trash"></i> Delete</button>
-                        </div>
-                    </form>
-                </div>
-            </div><!-- /pt2 -->
-        </div>
-    </div>
-
-    <div class="content pt-2">
-            <div class="card card-outline card-warning">
-                <div class="card-body">
-                    {{$dataTable->table(['class' => 'table table-bordered table-sm'])}}
-                </div>
-            </div>
-    </div>
 
 @endsection
 

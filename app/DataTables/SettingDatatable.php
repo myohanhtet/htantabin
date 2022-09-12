@@ -47,15 +47,15 @@ class SettingDatatable extends DataTable
                     ->setTableId('settingdatatable-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+//                    ->dom('Bfrtip')
+                    ->orderBy(1);
+//                    ->buttons(
+//                        Button::make('create'),
+//                        Button::make('export'),
+//                        Button::make('print'),
+//                        Button::make('reset'),
+//                        Button::make('reload')
+//                    );
     }
 
     /**
@@ -68,9 +68,9 @@ class SettingDatatable extends DataTable
         return [
             Column::make('key'),
             Column::make('value'),
-            Column::make('type'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+//            Column::make('type'),
+//            Column::make('created_at'),
+//            Column::make('updated_at'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
