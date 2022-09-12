@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="content pt-2">
-                <div class="card card-default">
+                <div class="card bg-secondary">
                     <div class="card-header">
                         <h3 class="card-title">Donor List</h3>
                     </div>
@@ -25,11 +25,11 @@
 
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-success">
+                            <button type="submit" class="btn btn-info btn-sm">
                                 <i class="fas fa-upload"></i> Upload
                             </button>
                             <button type="submit" name="truncate" value="true"
-                                    class="btn btn-outline-danger float-right"
+                                    class="btn btn-danger btn-sm float-right"
                                     onclick="return confirm('Are you sure you want to delete this item?');">
                                 <i class="fas fa-trash"></i> Delete</button>
                         </div>
@@ -40,9 +40,9 @@
         </div>
         <div class="col-md-6">
             <div class="content pt-2">
-                <div class="card card-default">
+                <div class="card bg-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Donor List</h3>
+                        <h3 class="card-title">Invoices</h3>
                     </div>
                     <form method="POST" action="{{ route('donors.upload') }}" enctype="multipart/form-data">
                         @csrf

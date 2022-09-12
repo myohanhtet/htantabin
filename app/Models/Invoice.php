@@ -43,6 +43,9 @@ class Invoice extends Model
     public static function boot()
     {
         parent::boot();
+
+        //create Auto Increment Invoice number with Times;
+        //TODO : make for times table and save as name;
         static::creating(function ($model){
             $model->number = Invoice::where('times',setting('times'))
                 ->max('number') + 1;
