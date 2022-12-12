@@ -6,6 +6,7 @@ use App\DataTables\LuckyDrawDatatable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLuckyDrawRequest;
 use App\Http\Requests\UpdateLuckyDrawRequest;
+use App\Models\Donor;
 use App\Models\Invoice;
 use App\Traits\Authorizable;
 use App\Traits\PrintPdf;
@@ -49,9 +50,8 @@ class LuckyDrawController extends Controller
      * @param StoreLuckyDrawRequest $request
      * @return Application|Factory|View
      */
-    public function store(Request $request)
+    public function store(StoreLuckyDrawRequest $request)
     {
-
         $amount = ($request->amount == '') ? 0 : $request->amount;
         $mtl_value = ($request->mtl_value == '') ? 0 : $request->mtl_value;
 
@@ -66,13 +66,6 @@ class LuckyDrawController extends Controller
             'times'=> setting('times')
         ]);
 
-        // $lucky_draw = Invoice::create($request->validated() +
-        //     [
-        //         'lucky_no' => $request->lucky_no,
-        //         'user_id' => auth()->id(),
-        //         'times'=> setting('times')
-        //     ]);
-
         $file_name = $this->printPdf($lucky_draw->id);
 
         session(['success' => __('lucky.success')]);
@@ -86,7 +79,7 @@ class LuckyDrawController extends Controller
      * @param Invoice $lucky
      * @return string
      */
-    public function show(Invoice $lucky)
+    public function show(Invoice $lucky): string
     {
         $fileName = $this->printPdf($lucky->id);
         return view('lucky_draws.show',['fileName' => $fileName , 'id' => $lucky->id]);
@@ -114,7 +107,6 @@ class LuckyDrawController extends Controller
     {
         $amount = (request()->amount == '') ? 0 : request()->amount;
         $mtl_value = (request()->mtl_value == '') ? 0 : request()->mtl_value;
-        // dd($mtl_value);
 
         $lucky->update([
             'amount' => $amount,
@@ -147,14 +139,37 @@ class LuckyDrawController extends Controller
         return redirect()->route('lucky.index');
     }
 
-    public function find(){
+    public function find()
+    {
         return view('lucky_draws.find');
     }
 
-    public function search(){
+    public function search()
+    {
         $fileName = $this->printPdf(mm_number(\request()->lucky_number));
         return view('lucky_draws.find',['fileName' => $fileName]);
     }
 
-
+    public function ajaxSearch(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $nameQuery = $request->get('name');
+        $addressQuery = $request->get('address');
+        $materialQuery = $request->get('material');
+        if($nameQuery){
+            $filterSearch = Invoice::where('donor','LIKE','%'.$nameQuery.'%')
+                ->get('donor');
+        }
+        else if ($addressQuery){
+            $filterSearch = Invoice::where('address','LIKE','%'.$addressQuery.'%')
+                ->get('address');
+        }
+        else if($materialQuery) {
+            $filterSearch = Invoice::where('mtl','LIKE','%'.$materialQuery.'%')
+                ->get('mtl');
+        }
+        else {
+            abort(404);
+        }
+        return response()->json($filterSearch);
+    }
 }

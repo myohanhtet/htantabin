@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use App\Imports\DonorImport;
+use App\Imports\InvoiceImpoer;
 use App\Models\Donor;
 use DB;
 use Illuminate\Http\Request;
@@ -89,21 +90,18 @@ class DonorController extends Controller
     }
 
     public function upload(Request $request){
-
         if (!Hash::check($request->password,auth()->user()->getAuthPassword())){
             session(['error' => __('auth.failed')]);
             return back();
         }
-
         try {
-
             if($request->truncate) {
                 DB::table('donors')->truncate();
                 session(['success' => ":) Record deleted successfully."]);
                 return back();
             }
-
-            Excel::import(new DonorImport(),$request->donor_file);
+            Excel::import(new InvoiceImpoer(),$request->invoice_file);
+//            Excel::import(new DonorImport(),$request->donor_file);
 
             session(['success' => ":) Upload Successfully."]);
 
@@ -114,7 +112,6 @@ class DonorController extends Controller
             session(['error' => $exceptione->getMessage()]);
             return back();
         }
-
     }
 
     public function ajaxSearch(Request $request): \Illuminate\Http\JsonResponse

@@ -20,10 +20,13 @@ Route::get('luckys/count','DashboardController@counts')->name('luckys.count');
 Route::get('lucky_list','DashboardController@LuckyList')->name('luckys.list_download');
 Route::get('empty_list','DashboardController@EmptyList')->name('luckys.empty_list_download');
 
-
+Route::get('luckiest/ajax-search',[\App\Http\Controllers\Back\LuckyDrawController::class,'ajaxSearch'])
+    ->name('luckiest.search');
 Route::controller(DonorController::class)
     ->as('donors.')
     ->group(function () {
         Route::post('donors/upload','DonorController@upload')->name('upload');
         Route::get('donors/ajax-search','DonorController@ajaxSearch')->name('search.name');
     });
+
+

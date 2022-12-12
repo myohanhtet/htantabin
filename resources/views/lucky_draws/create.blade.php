@@ -60,8 +60,7 @@
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
-        var route = "{{ route('donors.search.name') }}";
-
+        var route = "{{ route('luckiest.search') }}";
         $('#donor').typeahead(
             {
                 source: function (query, process)
@@ -69,11 +68,10 @@
                 return $.get(route, {
                     name: query
                 },function (data) {
-                    return process(data);
+                    return process(data.map(x=>x.donor));
                 });
             }
         });
-
         $('#address').typeahead(
             {
                 source: function (query, process)
@@ -93,7 +91,7 @@
                     return $.get(route, {
                         material: query
                     },function (data) {
-                        return process(data.map(x=>x.material));
+                        return process(data.map(x=>x.mtl));
                     });
                 }
             });

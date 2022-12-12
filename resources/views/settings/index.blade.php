@@ -35,10 +35,10 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form action="" enctype="multipart/form-data">
+                                <form action="{{ route("donors.upload") }}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                 <div class="form-group">
-                                    <input type="password" placeholder="Password" class="form-control form-control-sm" required>
+                                    <input name="password" type="password" placeholder="Password" class="form-control form-control-sm" required>
                                 </div>
                                     <div class="form-group">
                                         <input type="file" name="invoice_file">

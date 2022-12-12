@@ -15,15 +15,12 @@ use Maatwebsite\Excel\Facades\Excel;
 class DashboardController extends Controller
 {
     public function index(){
-
     	$lucky = Invoice::where('times',setting('times'))->get();
     	$pathan = Pathan::where('times',setting('times'))->get();
-
         return view('dashboard.index', ['lucky'=> $lucky,'pathan' => $pathan]);
     }
 
     public function counts() {
-
     	$empty_luckys = DB::table('invoices')
     	->select('amount', DB::raw('count(*) as total'),DB::raw('SUM(amount) as total_amount'))
     	->where('lucky_no',"")

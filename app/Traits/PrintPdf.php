@@ -23,7 +23,6 @@ trait PrintPdf
 {
     public function printPdf($id,$model = null)
     {
-
         $pdf = new MmTcpdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->SetAuthor('Myo Han Htet');
         $pdf->SetTitle('လက်ခံဖြတ်ပိုင်း');
@@ -37,33 +36,8 @@ trait PrintPdf
         $fontName = \TCPDF_FONTS::addTTFfont('fonts/Zawgyi-One.ttf', 'TrueTypeUnicode','', 96);
         $pdf->SetFont($fontName, '', 11, '', false);
 
-
         if (\request()->route()->getName() == "lucky.show" || \request()->route()->getName() == 'lucky.update' || \request()->route()->getName() == 'lucky.store'){
             $luckydraw = Invoice::find($id);
-
-            // Create QR code
-//            $writer = new PngWriter();
-//
-//// Create QR code
-//            $qrCode = QrCode::create('Data')
-//                ->setEncoding(new Encoding('UTF-8'))
-//                ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
-//                ->setSize(300)
-//                ->setMargin(10)
-//                ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
-//                ->setForegroundColor(new Color(0, 0, 0))
-//                ->setBackgroundColor(new Color(255, 255, 255));
-//
-//// Create generic logo
-//            $logo = Logo::create(asset('images/logo.png'))
-//                ->setResizeToWidth(50);
-//
-//// Create generic label
-//            $label = Label::create('Label')
-//                ->setTextColor(new Color(255, 0, 0));
-//
-//            $result = $writer->write($qrCode, $logo, $label);
-//            $data = $result->getDataUri();
             $pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
             $view = view('pdf.luckydraw',['luckydraw' => $luckydraw]);
             $fileLocation = public_path('invoices/lucky_draw/');
@@ -75,8 +49,7 @@ trait PrintPdf
             $view = view('pdf.luckylist',['luckys'=>$luckys,'lucky_number' => $id]);
             $fileLocation = public_path('invoices/lucky_list/');
             $fileName = $id.'_'.date('Y_m_i_s').'.pdf';
-        } elseif (\request()->route()->getName() == "pathans.show" || \request()->route()->getName() == 'pathans.update' || \request()->route()->getName() == 'pathans.store'){
-
+        } elseif (\request()->route()->getName() == "pathans.show" || \request()->route()->getName() == 'pathans.update' || \request()->route()->getName() == 'pathans.store') {
             $pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
             $view = view('pdf.pathan',['pathan' => $model,'params'=>$params]);
             $fileLocation = public_path('invoices/pathans/');
