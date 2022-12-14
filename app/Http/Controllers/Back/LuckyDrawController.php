@@ -6,7 +6,6 @@ use App\DataTables\LuckyDrawDatatable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLuckyDrawRequest;
 use App\Http\Requests\UpdateLuckyDrawRequest;
-use App\Models\Donor;
 use App\Models\Invoice;
 use App\Traits\Authorizable;
 use App\Traits\PrintPdf;
@@ -155,21 +154,25 @@ class LuckyDrawController extends Controller
         $nameQuery = $request->get('name');
         $addressQuery = $request->get('address');
         $materialQuery = $request->get('material');
+
         if($nameQuery){
-            $filterSearch = Invoice::where('donor','LIKE','%'.$nameQuery.'%')
-                ->get('donor');
+            $filterSearch = $this->searchByColumn('donor',$nameQuery);
         }
         else if ($addressQuery){
-            $filterSearch = Invoice::where('address','LIKE','%'.$addressQuery.'%')
-                ->get('address');
+            $filterSearch = $this->searchByColumn('address',$addressQuery);
         }
         else if($materialQuery) {
-            $filterSearch = Invoice::where('mtl','LIKE','%'.$materialQuery.'%')
-                ->get('mtl');
+            $filterSearch = $this->searchByColumn('mtl',$materialQuery);
         }
         else {
-            abort(404);
+            $this->abort(404);
         }
         return response()->json($filterSearch);
+    }
+
+    private function searchByColumn($column,$value)
+    {
+        return Invoice::where($column,'LIKE','%'.$value.'%')
+            ->distinct()->get($column);
     }
 }

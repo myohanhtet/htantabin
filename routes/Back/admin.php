@@ -26,7 +26,4 @@ Route::controller(DonorController::class)
     ->as('donors.')
     ->group(function () {
         Route::post('donors/upload','DonorController@upload')->name('upload');
-        Route::get('donors/ajax-search','DonorController@ajaxSearch')->name('search.name');
     });
-
-

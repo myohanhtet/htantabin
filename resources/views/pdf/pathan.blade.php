@@ -9,7 +9,7 @@
 </head>
 <body>
 <p style="text-align:center;line-height:1;">{{ uni2zg(setting('pathan-invoice-title-one')) }}</p>
-<p style="text-align:center;line-height:1;">{{ uni2zg(setting('pathan-invoice-title-two')) }}</p>
+<p style="text-align:center;line-height:1;">{{ uni2zg(str_replace("[times]", en_number(setting('times')), setting('pathan-invoice-title-two'))) }}</p>
 <p style="text-align:center;line-height:1;">{{ uni2zg(setting('pathan-invoice-title-three')) }}</p>
 <tcpdf method="write1DBarcode" params="{{ $params }}" />
 <table>
@@ -22,10 +22,6 @@
         <td></td>
         <td></td>
     </tr>
-{{--    <tr>--}}
-{{--        <td>မဲနံပါတ္</td>--}}
-{{--        <td>{{ en_number($pathan['lucky_no']) }}</td>--}}
-{{--    </tr>--}}
     <tr>
         <td></td>
         <td></td>
@@ -34,7 +30,6 @@
         <td>ရက္စြဲ</td>
         <td>{{ \Carbon\Carbon::parse($pathan->created_at)->toDayDateTimeString() }}</td>
     </tr>
-
     </tbody>
 </table>
 <br>

@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">{{ setting('luckydraw-invoice-title-two') }}</h1>
+                    <h1 class="m-0">{{ str_replace("[times]", en_number(setting('times')), setting('luckydraw-invoice-title-two')) }}</h1>
                 </div><!-- /.col -->
 {{--                <div class="col-sm-6">--}}
 {{--                    <ol class="breadcrumb float-sm-right">--}}
@@ -97,7 +97,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0">{{ setting('pathan-invoice-title-two') }}</h1>
+                    <h1 class="m-0">{{ str_replace("[times]", en_number(setting('times')), setting('pathan-invoice-title-two')) }}</h1>
                 </div><!-- /.col -->
                 {{--                <div class="col-sm-6">--}}
                 {{--                    <ol class="breadcrumb float-sm-right">--}}

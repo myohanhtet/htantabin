@@ -9,7 +9,7 @@
 </head>
 <body>
     <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-one')) }}</p>
-    <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-two')) }}</p>
+    <p style="text-align:center;line-height:1;">{{ uni2zg(str_replace("[times]", en_number(setting('times')), setting('luckydraw-invoice-title-two'))) }}</p>
     <p style="text-align:center;line-height:1;">{{ uni2zg(setting('luckydraw-invoice-title-three')) }}</p>
 {{--    <img src="{{$data}}" width="200" height="200">--}}
 <table>
