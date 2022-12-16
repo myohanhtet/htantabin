@@ -3,20 +3,29 @@
 namespace App\Http\Controllers\Back;
 
 use App\DataTables\LuckyDrawDatatable;
+use App\Exports\InvoiceExport;
+use App\Exports\LuckyExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLuckyDrawRequest;
 use App\Http\Requests\UpdateLuckyDrawRequest;
+use App\Imports\InvoiceImpoer;
 use App\Models\Invoice;
 use App\Traits\Authorizable;
 use App\Traits\PrintPdf;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Classes\Enum;
+use PharIo\Manifest\Exception;
 
 class LuckyDrawController extends Controller
 {
@@ -174,5 +183,70 @@ class LuckyDrawController extends Controller
     {
         return Invoice::where($column,'LIKE','%'.$value.'%')
             ->distinct()->get($column);
+    }
+
+    public function backup(Request $request)
+    {
+        if (!Hash::check($request->password,auth()->user()->getAuthPassword())) {
+            session(['error' => __('auth.failed')]);
+            return back();
+        }
+        try {
+            switch ($request->backup) {
+                case Enum::IMPORT:
+                   $status = $this->import($request->invoice_file);
+                    break;
+                case Enum::EXPORT:
+                    return $this->export();
+                    break;
+                case Enum::TRUNCATE:
+                    $status= $this->deleteAll();
+                    break;
+                default:
+                    $status = false;
+            }
+            $message = ($status) ? ["success"=>Enum::SUCCESS_MESSAGE]: ["error" => Enum::SOMETHING_WRONG_WRONG];
+            session($message);
+            return back();
+        } catch (\Exception $exception){
+            \Log::error("Exception In file import: ". $exception->getMessage());
+            session(['error' => Enum::SOMETHING_WRONG_WRONG]);
+            return back();
+        }
+    }
+
+    private function import($file): bool
+    {
+        try {
+            Excel::import(new InvoiceImpoer(),$file);
+            return true;
+        } catch (\Exception $e) {
+            \Log::error("Exception happen in file import: ". $e->getMessage());
+            return false;
+        }
+    }
+
+    private function export()
+    {
+        try {
+          return  Excel::download(new InvoiceExport(), Carbon::now().'_backup.xlsx');
+        } catch (\Exception $e) {
+            \Log::error("Exception happen in export: ". $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * @throws \Exception
+     */
+    private function deleteAll(): bool
+    {
+        try {
+            DB::table('invoices')->truncate();
+            return true;
+        } catch (\Exception $e){
+            \Log::error("Exception happen in truncate: ". $e->getMessage());
+            return false;
+        }
     }
 }

@@ -13,13 +13,23 @@ class InvoiceExport implements FromCollection,WithHeadings
     */
     public function collection()
     {
-        return Invoice::get(c);
+        return Invoice::get([
+            'lucky_no',
+            'amount',
+            'mtl_value',
+            'mtl',
+            'donor',
+            'address',
+            'times',
+            'number',
+            'invoice_number',
+        ]);
     }
 
     public function headings(): array
     {
         return ['Lucky Number','Amount','Material Amount',
-            'Material','Donor','Address','Times','User ID',
-            'Number','Invoice Number','Created At','Updated At'];
+            'Material','Donor','Address','Times',
+            'Number','Invoice Number'];
     }
 }

@@ -35,7 +35,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <form action="{{ route("donors.upload") }}" enctype="multipart/form-data" method="POST">
+                                <form action="{{ route("settings.backup") }}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                 <div class="form-group">
                                     <input name="password" type="password" placeholder="Password" class="form-control form-control-sm" required>
@@ -44,14 +44,14 @@
                                         <input type="file" name="invoice_file">
                                     </div>
                                     <div class="btn-group">
-                                        <button type="submit" class="btn btn-info btn-lg">
+                                        <button name="backup" value="import" type="submit" class="btn btn-info btn-lg">
                                             <i class="fas fa-file-upload"></i> Upload
                                         </button>
-                                        <button class="btn btn-success btn-lg">
+                                        <button name="backup" value="export" class="btn btn-success btn-lg">
                                             <i class="fas fa-download"></i> Backup</button>
                                     </div>
 
-                                <button name="delete" value="true" type="submit" class="btn btn-danger btn-lg float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
+                                <button name="backup" value="truncate" type="submit" class="btn btn-danger btn-lg float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
                                     <i class="far fa-trash-alt"></i> Truncate</button>
                                 </form>
                             </div>

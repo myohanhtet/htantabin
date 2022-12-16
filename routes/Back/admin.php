@@ -22,6 +22,8 @@ Route::get('empty_list','DashboardController@EmptyList')->name('luckys.empty_lis
 
 Route::get('luckiest/ajax-search',[\App\Http\Controllers\Back\LuckyDrawController::class,'ajaxSearch'])
     ->name('luckiest.search');
+Route::post("settings/backup",[\App\Http\Controllers\Back\LuckyDrawController::class,'backup'])->name('settings.backup');
+
 Route::controller(DonorController::class)
     ->as('donors.')
     ->group(function () {
