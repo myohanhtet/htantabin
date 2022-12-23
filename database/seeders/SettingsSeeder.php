@@ -21,7 +21,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 'key' => 'luckydraw-invoice-title-two',
-                'value' => 'ကိုးနဝင်းကပ်ကျော်သိမ်ဦးစေတီတော်၊ (၁၀၅)ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်'
+                'value' => 'ကိုးနဝင်းကပ်ကျော်သိမ်ဦးစေတီတော်၊ ([times])ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်'
             ],
             [
                 'key' => 'luckydraw-invoice-title-three',
@@ -33,7 +33,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 'key' => 'pathan-invoice-title-two',
-                'value' => '(၁၀၅)ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်၊ မဟာပဋ္ဌာန်းရွတ်ဖတ်ပူဇော်ပွဲ'
+                'value' => '([times])ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်၊ မဟာပဋ္ဌာန်းရွတ်ဖတ်ပူဇော်ပွဲ'
             ],
             [
                 'key' => 'pathan-invoice-title-three',
@@ -41,7 +41,7 @@ class SettingsSeeder extends Seeder
             ],
             [
                 'key' => 'times',
-                'value' => 105
+                'value' => 106
             ],
         ];
 

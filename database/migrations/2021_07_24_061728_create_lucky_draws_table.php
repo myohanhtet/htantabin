@@ -16,8 +16,8 @@ class CreateLuckyDrawsTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('lucky_no')->nullable();
-            $table->integer('amount')->nullable();
-            $table->integer('mtl_value')->nullable();
+            $table->integer('amount')->default(0);
+            $table->integer('mtl_value')->default(0);
             $table->string('mtl')->nullable();
             $table->text('donor');
             $table->string('address');

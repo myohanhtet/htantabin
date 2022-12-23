@@ -28,7 +28,6 @@ class InvoiceImpoer implements ToModel,WithHeadingRow
             'user_id' => auth()->user()->id,
             'number' => $row['number'],
             'invoice_number' => empty($row['invoice_number']) ?  $row['times'] .'-'. str_pad($row['number'],5,0,STR_PAD_LEFT): $row['invoice_number'],
-
         ]);
     }
 }

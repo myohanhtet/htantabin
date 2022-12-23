@@ -17,7 +17,7 @@
 @endcan
 @can('view_lucky')
 <li class="nav-item">
-    <a href="{{ route('lucky.index') }}" class="rounded-0 nav-link {{ request()->routeIs('lucky.*') ? 'active' : ''}}">
+    <a href="{{ route('lucky.index') }}" class="rounded-0 nav-link {{ request()->routeIs('lucky.index') ? 'active' : ''}}">
         <i class="nav-icon fas fa-ticket-alt"></i>
         <p>{{ __('menu.lucky draw') }}</p>
     </a>
@@ -31,7 +31,7 @@
 </li>
 @endcan
 <li class="nav-item">
-    <a href="{{ route('luckys.count') }}" class="rounded-0 nav-link {{ request()->routeIs('luckys.count') ? 'active' : ''}}">
+    <a href="{{ route('lucky.count') }}" class="rounded-0 nav-link {{ request()->routeIs('lucky.count') ? 'active' : ''}}">
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>လက်ကျန်ပြေစာ</p>
     </a>

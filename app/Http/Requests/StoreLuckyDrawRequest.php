@@ -22,13 +22,13 @@ class StoreLuckyDrawRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'amount' => 'required|max:7',
             'donor' => 'required',
-            'mtl' => 'required',
-            'mtl_value' => 'required|max:7',
+//            'mtl' => 'required',
+//            'mtl_value' => 'required|max:7',
             'address' => 'required',
         ];
     }
