@@ -57,8 +57,9 @@ class Repository implements RepositoryInterface
      * @param mixed $id
      * @return bool
      */
-    public function delete($id)
+    public function delete($id): bool
     {
-        return (bool)$this->model->delete($id);
+       $data = $this->model->find($id);
+        return (bool)$data->delete();
     }
 }

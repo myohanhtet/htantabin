@@ -18,4 +18,6 @@ interface InvoiceService
     public function backup(Request $request);
 
     public function invoiceCount();
+
+    public function delete($id);
 }

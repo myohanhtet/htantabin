@@ -145,4 +145,9 @@ class InvoiceService implements \App\Services\Contract\InvoiceService
             ->paginate(15);
         return ['empty_luckys' => $empty_luckys,'lucky_numbers' =>$lucky_numbers];
     }
+
+    public function delete($id): bool
+    {
+        return $this->invoiceRepository->delete($id);
+    }
 }

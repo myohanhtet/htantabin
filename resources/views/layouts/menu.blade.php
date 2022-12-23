@@ -33,7 +33,7 @@
 <li class="nav-item">
     <a href="{{ route('lucky.count') }}" class="rounded-0 nav-link {{ request()->routeIs('lucky.count') ? 'active' : ''}}">
         <i class="nav-icon fas fa-chart-pie"></i>
-        <p>လက်ကျန်ပြေစာ</p>
+        <p>{{ __('menu.invoice_count') }}</p>
     </a>
 </li>
 @can('view_users')

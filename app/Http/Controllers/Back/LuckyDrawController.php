@@ -3,27 +3,24 @@
 namespace App\Http\Controllers\Back;
 
 use App\DataTables\LuckyDrawDatatable;
-use App\Exports\InvoiceExport;
+use App\Exports\EmptyListExport;
+use App\Exports\LuckyExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLuckyDrawRequest;
 use App\Http\Requests\UpdateLuckyDrawRequest;
-use App\Imports\InvoiceImpoer;
 use App\Models\Invoice;
 use App\Services\InvoiceService;
 use App\Traits\Authorizable;
 use App\Traits\PrintPdf;
-use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Classes\Enum;
+use PhpOffice\PhpSpreadsheet\Exception;
 
 class LuckyDrawController extends Controller
 {
@@ -119,10 +116,10 @@ class LuckyDrawController extends Controller
      * @param Invoice $lucky
      * @return RedirectResponse
      */
-    public function destroy(Invoice $lucky)
+    public function destroy(Invoice $lucky): RedirectResponse
     {
         Log::info("Luck ID ". $lucky->id ." deleted by ". auth()->user()->name );
-        $lucky->delete();
+        $this->invoice->delete($lucky->id);
         session(['info' =>__('lucky.delete')]);
         return redirect()->route('lucky.index');
     }
@@ -151,5 +148,23 @@ class LuckyDrawController extends Controller
     public function invoiceCount()
     {
         return view('lucky_draws.count', $this->invoice->invoiceCount());
+    }
+
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function LuckyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        return Excel::download(new LuckyExport(), Carbon::now().'_invoices.xlsx');
+    }
+
+    /**
+     * @throws Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function EmptyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        return Excel::download(new EmptyListExport(), Carbon::now().'_empty_invoices.xlsx');
     }
 }

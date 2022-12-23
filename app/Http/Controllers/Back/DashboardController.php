@@ -19,14 +19,4 @@ class DashboardController extends Controller
     	$pathan = Pathan::where('times',setting('times'))->get();
         return view('dashboard.index', ['lucky'=> $lucky,'pathan' => $pathan]);
     }
-
-    public function LuckyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
-    {
-        return Excel::download(new LuckyExport(), Carbon::now().'_invoices.xlsx');
-    }
-
-    public function EmptyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
-    {
-        return Excel::download(new EmptyListExport(), Carbon::now().'_empty_invoices.xlsx');
-    }
 }
