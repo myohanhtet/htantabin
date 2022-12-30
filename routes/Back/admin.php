@@ -19,6 +19,7 @@ Route::post("settings/backup",[\App\Http\Controllers\Back\LuckyDrawController::c
 //lucky draw
 Route::get('lucky_list','LuckyDrawController@LuckyList')->name('luckys.list_download');
 Route::get('empty_list','LuckyDrawController@EmptyList')->name('luckys.empty_list_download');
+Route::get('lucky/empty-list/{amount}','LuckyDrawController@EmptyList');
 Route::get('lucky/find/','LuckyDrawController@find')->name('lucky.find');
 Route::get('lucky/search','LuckyDrawController@search')->name('lucky.search');
 Route::get('lucky/count','LuckyDrawController@invoiceCount')->name('lucky.count');

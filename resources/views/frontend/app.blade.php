@@ -39,9 +39,13 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-normal">ထန်းတပင်ကျောင်းတိုက်</h5>
   <nav class="my-2 my-md-0 mr-md-3">
+      @auth
+          <a class="p-2 {{ request()->routeIs('frontend.index') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('dashboard.index') }}">Dashboard</a>
+      @else
+          <a href="{{ route('login') }}" class="p-2 btn btn-outline-dark">Log in</a>
 
+      @endauth
     <a class="p-2 {{ request()->routeIs('frontend.index') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.index') }}">မူလစာမျက်နှာ</a>
-
     <a class="p-2 {{ request()->routeIs('frontend.donors') ? 'btn btn-outline-dark' : 'text-dark'}}" href="{{ route('frontend.donors') }}">အလှူရှင်များ</a>
 
   </nav>

@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Invoice;
 use App\Repositories\Contract\InvoiceInterface;
-use App\Repositories\Contract\RepositoryInterface;
 
 class InvoiceRepository extends Repository implements InvoiceInterface
 {
@@ -12,5 +11,17 @@ class InvoiceRepository extends Repository implements InvoiceInterface
     public function __construct(Invoice $model)
     {
         $this->model = $model;
+    }
+
+    public function emptyLuckyNumber($amount)
+    {
+        return $this->model->where('lucky_no',"")
+            ->where('times',setting('times'))->get();
+    }
+
+    public function searchByColumn($column, $value)
+    {
+        return $this->model->where($column,'LIKE','%'.$value.'%')
+            ->distinct()->get($column);
     }
 }

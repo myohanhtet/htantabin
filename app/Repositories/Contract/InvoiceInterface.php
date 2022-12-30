@@ -2,32 +2,34 @@
 
 namespace App\Repositories\Contract;
 
+use Illuminate\Database\Eloquent\Model;
+
 interface InvoiceInterface
 {
     /**
      * Find resource.
      *
      * @param mixed $id
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
-    public function find($id);
+    public function find($id): Model;
 
     /**
      * Create new resource.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
-    public function create(array $data);
+    public function create(array $data): Model;
 
     /**
      * Update existing resource.
      *
      * @param mixed $id
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
-    public function update($id, array $data);
+    public function update($id, array $data): Model;
 
     /**
      * Delete existing resource.
@@ -35,5 +37,9 @@ interface InvoiceInterface
      * @param mixed $id
      * @return bool
      */
-    public function delete($id);
+    public function delete($id): bool;
+
+    public function emptyLuckyNumber($amount);
+
+    public function searchByColumn($column,$value);
 }

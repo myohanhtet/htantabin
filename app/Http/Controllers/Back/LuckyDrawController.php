@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\Classes\Enum;
 use App\DataTables\LuckyDrawDatatable;
 use App\Exports\EmptyListExport;
 use App\Exports\LuckyExport;
@@ -151,20 +152,29 @@ class LuckyDrawController extends Controller
     }
 
     /**
-     * @throws Exception
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function LuckyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function LuckyList()
     {
-        return Excel::download(new LuckyExport(), Carbon::now().'_invoices.xlsx');
+        try {
+            return Excel::download(new LuckyExport(), Carbon::now().'_invoices.xlsx');
+        } catch (\Exception $e) {
+            Log::error("Exception happen in luckyList Download " . $e->getMessage());
+            return back();
+        }
     }
 
     /**
-     * @throws Exception
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
-    public function EmptyList(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function EmptyList($amount = null)
     {
-        return Excel::download(new EmptyListExport(), Carbon::now().'_empty_invoices.xlsx');
+        try {
+            if (!empty($amount)){
+                dd("LOL");
+            }
+            return Excel::download(new EmptyListExport(), Carbon::now().'_empty_invoices.xlsx');
+        } catch (\Exception $e){
+            return back();
+        }
     }
+
 }

@@ -46,7 +46,7 @@
                    <h1>  ရန်ကုန်တိုင်းဒေသကြီး၊ ကမာရွတ်မြို့နယ်၊ ထန်းတပင်ကျောင်းတိုက်</h1>
 
                 </div>
-                <h3>(၁၀၆)ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်၊ စာရေးတံမဲလောင်းလှူပွဲ</h3>
+                <h3>({{setting('times')}})ကြိမ်မြောက်၊ ဗုဒ္ဓပူဇနိယပွဲတော်၊ စာရေးတံမဲလောင်းလှူပွဲ</h3>
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">

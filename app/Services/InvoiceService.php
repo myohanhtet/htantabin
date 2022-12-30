@@ -47,13 +47,13 @@ class InvoiceService implements \App\Services\Contract\InvoiceService
         $addressQuery = $request->get('address');
         $materialQuery = $request->get('material');
         if($nameQuery){
-            $filterSearch = $this->searchByColumn('donor',$nameQuery);
+            $filterSearch = $this->invoiceRepository->searchByColumn('donor',$nameQuery);
         }
         else if ($addressQuery){
-            $filterSearch = $this->searchByColumn('address',$addressQuery);
+            $filterSearch =$this->invoiceRepository->searchByColumn('address',$addressQuery);
         }
         else if($materialQuery) {
-            $filterSearch = $this->searchByColumn('mtl',$materialQuery);
+            $filterSearch = $this->invoiceRepository->searchByColumn('mtl',$materialQuery);
         }
         else {
             $this->abort(404);
@@ -61,11 +61,6 @@ class InvoiceService implements \App\Services\Contract\InvoiceService
         return response()->json($filterSearch);
     }
 
-    private function searchByColumn($column,$value)
-    {
-        return Invoice::where($column,'LIKE','%'.$value.'%')
-            ->distinct()->get($column);
-    }
 
     public function backup(Request $request)
     {
@@ -138,11 +133,13 @@ class InvoiceService implements \App\Services\Contract\InvoiceService
             ->where('lucky_no',"")
             ->where('times',setting('times'))
             ->groupBy('amount')->get();
+
         $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))
             ->where('times',setting('times'))
             ->groupBy('lucky_no')
             ->paginate(15);
+
         return ['empty_luckys' => $empty_luckys,'lucky_numbers' =>$lucky_numbers];
     }
 
@@ -150,4 +147,5 @@ class InvoiceService implements \App\Services\Contract\InvoiceService
     {
         return $this->invoiceRepository->delete($id);
     }
+
 }

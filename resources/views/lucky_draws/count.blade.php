@@ -25,6 +25,7 @@
                             <th>ငွေသား</th>
                             <th>စောင်ရေ</th>
                             <th>ငွေပေါင်း</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                                 <td>{!! ($empty_lucky->amount == '0')? 'ပစ္စည်း' : en_number($empty_lucky->amount) !!}</td>
                                 <td>{!! en_number($empty_lucky->total) !!}</td>
                                 <td>{!! en_number($empty_lucky->total_amount) !!}</td>
+                                <td><a href="{{ url('admin/lucky/empty-list/')."/".$empty_lucky->amount }}" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

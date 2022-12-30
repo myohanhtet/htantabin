@@ -17,10 +17,9 @@
                                     <tr>
                                         <td>{{ strtoupper($setting->key) }}</td>
                                         <td>{{ $setting->value }}</td>
-                                        <td><a href="{{ route('setting.edit',$setting->id) }}" class="btn btn-default">
+                                        <td><a href="{{ route('setting.edit',$setting->id) }}" class="btn btn-default btn-sm">
                                                 <i class="fas fa-edit"></i>
                                             </a></td>
-
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -44,14 +43,14 @@
                                         <input type="file" name="invoice_file">
                                     </div>
                                     <div class="btn-group">
-                                        <button name="backup" value="import" type="submit" class="btn btn-info btn-lg">
+                                        <button name="backup" value="import" type="submit" class="btn btn-info">
                                             <i class="fas fa-file-upload"></i> Upload
                                         </button>
-                                        <button name="backup" value="export" class="btn btn-success btn-lg">
+                                        <button name="backup" value="export" class="btn btn-success">
                                             <i class="fas fa-download"></i> Backup</button>
                                     </div>
 
-                                <button name="backup" value="truncate" type="submit" class="btn btn-danger btn-lg float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
+                                <button name="backup" value="truncate" type="submit" class="btn btn-danger float-right" onclick="return confirm('Are you sure you want to delete this Invoices?');">
                                     <i class="far fa-trash-alt"></i> Truncate</button>
                                 </form>
                             </div>

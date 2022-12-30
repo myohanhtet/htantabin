@@ -21,7 +21,7 @@ class Repository implements RepositoryInterface
      * @param mixed $id
      * @return Model
      */
-    public function find($id)
+    public function find($id): Model
     {
         return $this->model->find($id);
     }
@@ -32,7 +32,7 @@ class Repository implements RepositoryInterface
      * @param array $data
      * @return Model
      */
-    public function create(array $data)
+    public function create(array $data): Model
     {
         return $this->model->create($data);
     }
@@ -44,7 +44,7 @@ class Repository implements RepositoryInterface
      * @param array $data
      * @return Model
      */
-    public function update($id, array $data)
+    public function update($id, array $data): Model
     {
         $add = $this->model->find($id);
         $add->update($data);
