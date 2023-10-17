@@ -25,4 +25,5 @@ return [
     'created by' => 'ဖန်တီးသူ',
     'created at' => 'ပြုလုပ်သည်',
     'updated at' => 'ပြုပြင်သည်',
+    'empty' => "မတွေပါ။"
 ];

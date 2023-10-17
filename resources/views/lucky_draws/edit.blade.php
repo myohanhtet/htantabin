@@ -16,7 +16,7 @@
                     @csrf
                     @method('PUT')
                     <div class="card-body">
-                        <h5>{{ __('lucky.lucky id') .' ('. en_number($lucky->id) .')'}}</h5>
+                        <h5>{{ __('lucky.lucky id') .' ('. en_number($lucky->invoice_number) .')'}}</h5>
                         <hr>
                         <div class="row">
                             <div class="col-3">

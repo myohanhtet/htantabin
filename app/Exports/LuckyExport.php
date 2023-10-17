@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class LuckyExport implements  FromCollection,WithHeadings
 {
 
-    public function collection()
+    public function collection(): \Illuminate\Support\Collection
     {
         return $lucky_numbers = DB::table('invoices')
             ->select('lucky_no', DB::raw('count(*) as total'),DB::raw("SUM(amount) as amount"))

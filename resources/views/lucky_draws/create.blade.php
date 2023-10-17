@@ -47,6 +47,7 @@
                     </div>
                         <div class="pt-2">
                             <button class="btn btn-success" type="submit">{{ __('lucky.save') }}</button>
+                            <button class="btn btn-success" type="submit">PDF</button>
                         </div>
                     </form>
                 </div>
@@ -54,13 +55,13 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('page_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         var route = "{{ route('luckiest.search') }}";
+
         $('#donor').typeahead(
             {
                 source: function (query, process)
@@ -83,7 +84,6 @@
                     });
                 }
             });
-
         $('#mtl').typeahead(
             {
                 source: function (query, process)

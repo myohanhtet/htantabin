@@ -169,10 +169,11 @@ class LuckyDrawController extends Controller
     {
         try {
             if (!empty($amount)){
-                dd("LOL");
+                session(['info' =>__('lucky.empty')]);
             }
             return Excel::download(new EmptyListExport(), Carbon::now().'_empty_invoices.xlsx');
         } catch (\Exception $e){
+            Log::error("Exception happen in EmptyList Download " . $e->getMessage());
             return back();
         }
     }

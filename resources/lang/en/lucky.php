@@ -21,4 +21,5 @@ return [
     'update' => 'Your Lucky is successfully updated.',
     'delete' => 'Your Lucky is successfully deleted.',
     'action' => 'Action',
+    'empty' => "Empty"
 ];
