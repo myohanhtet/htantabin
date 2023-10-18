@@ -19,3 +19,7 @@ These instructions will help you set up the project on your local machine for de
 ### Prerequisites
 
 List any software, libraries, or tools that need to be installed before the user can get started with your project.
+
+## License
+
+This project is licensed under the [MIT](LICENSE) License
