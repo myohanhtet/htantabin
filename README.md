@@ -4,16 +4,18 @@
 
 ## Overview
 
-Htantabin is a voucher system for use at the Monasteries. It includes two types of vouchers.
+Htantabin is a voucher system designed for use in monasteries. It includes two types of vouchers.
 
 ## Features
 
-- Lucky Draw voucher
-- Pathan voucher
-- User role based
-- Print with PDF
+- Lucky Draw voucher  
+- Pathan voucher  
+- Role-based user management  
+- PDF printing functionality  
 
-## License
+## License  
+
+This project is licensed under the [MIT License](LICENSE).  
 
 ## Installation
 Clone this repository
@@ -63,4 +65,3 @@ php artisan db:seed
 Email : superadmin@gmail.com,
 Password : 12345678
 ```
-This project is licensed under the [MIT](LICENSE) License
