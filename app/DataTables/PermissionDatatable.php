@@ -84,8 +84,8 @@ class PermissionDatatable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename():string
     {
-        return 'Permission_' . date('YmdHis');
+        return 'Permission_' . date('YmdHis').'.xlsx';
     }
 }

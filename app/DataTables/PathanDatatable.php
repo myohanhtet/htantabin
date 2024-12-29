@@ -96,8 +96,8 @@ class PathanDatatable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename():string
     {
-        return 'Pathan_' . date('YmdHis');
+        return 'Pathan_' . date('YmdHis').'.xlsx';
     }
 }

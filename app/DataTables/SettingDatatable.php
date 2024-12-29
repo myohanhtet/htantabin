@@ -84,8 +84,8 @@ class SettingDatatable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename() :string
     {
-        return 'Setting_' . date('YmdHis');
+        return 'Setting_' . date('YmdHis').'.xlsx';
     }
 }

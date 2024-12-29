@@ -11,7 +11,7 @@
 <p style="text-align:center;line-height:1;">{{ uni2zg(setting('pathan-invoice-title-one')) }}</p>
 <p style="text-align:center;line-height:1;">{{ uni2zg(str_replace("[times]", en_number(setting('times')), setting('pathan-invoice-title-two'))) }}</p>
 <p style="text-align:center;line-height:1;">{{ uni2zg(setting('pathan-invoice-title-three')) }}</p>
-<tcpdf method="write1DBarcode" params="{{ $params }}" />
+{{-- <tcpdf method="write1DBarcode" params="{{ $params }}" /> --}}
 <table>
     <tbody>
     <tr>

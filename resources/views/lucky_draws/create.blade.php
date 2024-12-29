@@ -47,7 +47,7 @@
                     </div>
                         <div class="pt-2">
                             <button class="btn btn-success" type="submit">{{ __('lucky.save') }}</button>
-                            <button class="btn btn-success" type="submit">PDF</button>
+                            {{-- <button class="btn btn-success" type="submit">PDF</button> --}}
                         </div>
                     </form>
                 </div>

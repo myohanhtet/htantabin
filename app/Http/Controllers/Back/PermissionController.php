@@ -51,8 +51,7 @@ class PermissionController extends Controller
         $permission = Permission::create($request->validated());
 
         $permission->syncRoles($request->role);
-
-        flash("Your permissions is successfully created &#128522;")->success();
+        session(['success' => 'Your permissions is successfully created &#128522;']);
 
         return redirect()->route('permissions.index');
 
@@ -66,7 +65,7 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        flash("&#128540; &#128541; &#128539; &#128538; &#128537; &#128536;");
+        session(['success' => "&#128540; &#128541; &#128539; &#128538; &#128537; &#128536;"]);
         return redirect()->back();
     }
 
@@ -93,7 +92,7 @@ class PermissionController extends Controller
         Log::info("Permission name ". $permission->name ." updated by ". auth()->user()->name );
         $permission->update($request->validated());
         $permission->syncRoles($request->role);
-        flash("Your permission is successfully updated.")->success();
+        session(['success' => "Your permission is successfully updated."]);
         return redirect()->route("permissions.index");
     }
 
@@ -107,7 +106,7 @@ class PermissionController extends Controller
     {
         Log::info("Permission name ". $permission->name ." deleted by ". auth()->user()->name );
         $permission->delete();
-        flash("Your permission is successfully deleted")->success();
+        session(['success' => "Your permission is successfully deleted"]);
         return redirect()->route('permissions.index');
     }
 }

@@ -107,8 +107,8 @@ class LuckyDrawDatatable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename() :string
     {
-        return 'LuckyDraw_' . date('YmdHis');
+        return 'LuckyDraw_' . date('YmdHis').'.xlsx';
     }
 }

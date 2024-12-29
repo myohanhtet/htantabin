@@ -30,7 +30,9 @@ trait PrintPdf
         $pdf->SetKeywords('Yangon, Monastery, Htantabin Monastery');
 
         // remove default header/footer
-        $params = $pdf->serializeTCPDFtagParameters(array('CODE 39', 'C39', '', '', 80, 30, 0.4, array('position'=>'S', 'border'=>true, 'padding'=>4, 'fgcolor'=>array(0,0,0), 'bgcolor'=>array(255,255,255), 'text'=>true, 'font'=>'helvetica', 'fontsize'=>8, 'stretchtext'=>4), 'N'));
+        // $params = $pdf->serializeTCPDFtagParameters(array('CODE 39', 'C39', '', '', 80, 30, 0.4, array('position'=>'S', 'border'=>true, 'padding'=>4, 'fgcolor'=>array(0,0,0), 'bgcolor'=>array(255,255,255), 'text'=>true, 'font'=>'helvetica', 'fontsize'=>8, 'stretchtext'=>4), 'N'));
+
+
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
         $fontName = \TCPDF_FONTS::addTTFfont('fonts/Zawgyi-One.ttf', 'TrueTypeUnicode','', 96);
@@ -51,7 +53,7 @@ trait PrintPdf
             $fileName = $id.'_'.date('Y_m_i_s').'.pdf';
         } elseif (\request()->route()->getName() == "pathans.show" || \request()->route()->getName() == 'pathans.update' || \request()->route()->getName() == 'pathans.store') {
             $pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
-            $view = view('pdf.pathan',['pathan' => $model,'params'=>$params]);
+            $view = view('pdf.pathan',['pathan' => $model,'params'=>array('CODE 39', 'C39', '', '', 80, 30, 0.4, array('position'=>'S', 'border'=>true, 'padding'=>4, 'fgcolor'=>array(0,0,0), 'bgcolor'=>array(255,255,255), 'text'=>true, 'font'=>'helvetica', 'fontsize'=>8, 'stretchtext'=>4), 'N')]);
             $fileLocation = public_path('invoices/pathans/');
             $fileName = $id.'_'.date('Y_m_i_s').'.pdf';
         }
